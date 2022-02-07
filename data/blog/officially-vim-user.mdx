@@ -1,0 +1,73 @@
+---
+title: I'm Officially Vim Users Now!
+date: '2019-09-18 12:13:47'
+tags: ['vim', 'tools']
+draft: false
+summary: Yes, you read it right, this post probably falls under the category of another vim rant-love kind of post again. I won't discuss things like how to use vim, list of common shortcut on it or talk about why using vim. In this post I will share my current setup in vim, what did I learn after using vim for about 599 hours since the beginning of this year and some stats on how I'm using it for my daily coding activities.
+images: ['https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1568772765/Blog/vim-view.svg']
+layout: PostLayout
+---
+
+Yes, you read it right, this post probably falls under the category of another vim rant-love kind of post again. I won't discuss things like how to use vim, list of common shortcut on it or talk about why using vim. In this post I will share my current setup in vim, what did I learn after using vim for about 599 hours since the beginning of this year and some stats on how I'm using it for my daily coding activities.
+
+## How I fall into VIM
+
+I tried vim since last year, but I never put a serious effort into using it. At first, I mostly using it for squashing/editing commit message after `git rebase`, or change a config directly to my personal server in Digital Ocean. It was after I watched this talk from James Powell at PyData, Seattle 2017 I start wondering, I worked with terminal a lot when I'm coding, and before vim, I need to switch between a terminal and my text editor (Sublime Text at that time) frequently. This guy in his talk while doing live demo can easily switch between his editor and terminal. It makes me curious about how can I do that as well.
+
+<YoutubeEmbed id="cKPlPJyQrt4" />
+
+I did my research on how to effectively using vim and spent quite a bit of time to find a suitable vim configuration until I end up with my [current setup](https://github.com/martindavid/nvim-config), which works well with neovim and has served my workflow for development quite well for months now.
+
+Some configurations that I've tried before and I thoughts it's too complicated then I decided to abandon it:
+
+- https://github.com/rafi/vim-config
+- https://github.com/SpaceVim/SpaceVim
+
+These are the list of plugin that I use every day and has increased my productivity with vim:
+
+- [NerdTree](https://github.com/scrooloose/nerdtree)
+  If you come from a text editor such as Sublime or VsCode where you still depend on the sidebar for navigating between file, this plugin can help you slowly transition into vim
+- [vim-easymotions](https://github.com/easymotion/vim-easymotion)
+  Speed up how you do [motion](http://vimdoc.sourceforge.net/htmldoc/motion.html) in vim.
+- [coc.nvim](https://github.com/neoclide/coc.nvim)
+  One of the advantages of using vim is it's lightweight compared to IDE, but sometimes you still want to have a power that IDE can provide such as code completion, code navigation, etc. This plugin can provide those features without bloated your vim with unnecessary features.
+- [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
+  Easily search file within vim
+- [vim-grepper](https://github.com/mhinz/vim-grepper)
+  Search for anything within vim
+
+## What did I learn
+
+Some of the things that I learn over time since the first time I use it for everything with text:
+
+1.  **I use many plugins when I first-time use vim to try to get the same experience with my previous text editor.**
+    After using it for a while, then I realise it's not the right way of using it. I learn about how to effectively using vim motion, try a lot sort of shortcut combination, and finally, I remove many plugins that I no longer use after I master the keyboard shortcut. I recommend looking at various vim cheatsheet out there to familiarise with most of the keyboard shortcut/combination for it.
+
+    For vim cheatsheet, this is the one that I like from ViEmu.com
+
+    ![Vim Cheatsheet](http://www.viemu.com/vi-vim-cheat-sheet.gif)
+
+2.  **Try using it every day**
+    This was the hardest part when I was transitioning to vim. I had several difficulties when I first fully transition to vim; most of the time usually familiarise myself between normal / insert mode. However, just like the use of a plugin, after I get used with all of the shortcuts and understand more around the differences between motion, command and operator, I start seeing the benefit of using this text editor.
+
+3.  **Always look into a better way of doing things in vim**
+    One thing that I learn after using vim for a while is, this text editor has so many hidden features. Every day you may figure out something new on vim that you haven't thought of before. You may learn over time that you may not even need plugins for things that you want to do in vim. So be ready to get surprised and always try to learn about getting better on using vim every single day.
+
+4.  **Don't bloat your config with unnecessary plugins**
+    As I said in my first learning, I used many plugins when I first time using vim. It was a good experience initially until you experience slowness and vim get hang most of the time. I almost decided to go back to Sublime, but then after talked to my colleague and googling on the issue, I learned that it probably because of a number of plugins that vim loaded the first time and got activated while I'm using it. After I remove most of the plugins that I rarely use after I familiar with the internal works of vim, it runs fast and very light on memory consumption.
+
+## How I'm using vim
+
+After several months using it for my side project, I decided to try using it full-time, including my daily work at CultureAmp. Early this year, I start using it for everyday work, and I integrate [wakatime](https://wakatime.com) plugin to see how I go overtime using this editor. Up until now, I have used vim for about 599 hours and 36 minutes. The following graphs show a detail of how long I spend on vim and my programming activities around it.
+
+![Wakatime stats](https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1568772194/Blog/wakatime-full-stats.png)
+
+<Figure src="https://wakatime.com/share/@martin_david/565682fb-0f66-42c8-b3b7-e9b5204f2f1d.svg" />
+
+<Figure src="https://wakatime.com/share/@martin_david/1d8da541-9109-4f30-8874-0548ebaaf3c2.svg" />
+
+<Figure src="https://wakatime.com/share/@martin_david/fbd6da33-a667-498d-92c8-719891d37a55.svg" />
+
+## My Last Thought
+
+As a closing thought, I'd say this [survey](https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/) from StackOverflow probably right. Once you get into vim, you might be found it hard to exit it.

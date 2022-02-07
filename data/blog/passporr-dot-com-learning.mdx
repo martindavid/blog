@@ -1,0 +1,105 @@
+---
+title: I launch Passporr and this is what I learn
+date: '2019-09-21 22:58:03'
+tags: ['reactjs', 'python', 'side hustle']
+draft: false
+summary: In the last couple of years, I launched two of my side-projects. The first one is The Baby Club and second was Palletio. Both are no longer exists today, but I learned a lot during my time run those two platforms for a while. In this post, I’ll share another side-hustler that I launch recently called Passporr.
+images:
+  [
+    'https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1569144155/Blog/passporr-home-page.png',
+  ]
+layout: PostLayout
+---
+
+In the last couple of years, I launched two of my side-projects. The first one is [The Baby Club](https://www.crunchbase.com/organization/the-baby-club) and second was [Palletio](https://martinlabs.me/my-work/work-palletio/). Both are no longer exists today, but I learned a lot during my time run those two platforms for a while. In this post, I’ll share another side-hustler that I launch recently called Passporr.
+
+Recently, in the middle of my day-to-day work at CultureAmp, my other two friends and I once again working on a new platform, it’s called [Passporr](http://bit.ly/2ksdqZR). [Passporr](http://bit.ly/2ksdqZR) is a platform that allows international students to search and find anything related to their studies. It can help international students by providing them with free tools and knowledge base of the question and answer from the community. The idea comes from my friend Juan who’s frequently seeing people (especially potential international students) asking over and over again in the facebook group. They are basically asking the same questions about all things in Australia.
+
+## Product and Technology Stack
+
+We first gathered in July to talk about the idea, and in August, I started to build an initial MVP product. Since then passporr have been into several iterations until what everyone can see now in https://passporr.com.
+
+### What's in the product
+
+In the current version of passporr, we’re targetting people from Colombia as our first target market, hence all of the content is in the Spanish language. In this platform, there are three things that users can do. First, the search engine allows people to search for answers about anything in Australia that people from Colombia frequently asked. We collected data from several Colombian facebook group in Australia and use a machine-learning algorithm to categorise them and makes it searchable. Second, it provides a simple tool for people to calculate an estimate for the cost of living in several cities in Australia. They can compare it based on several criteria such as type of accommodation, lifestyle, transport, etc. Lastly, it provides vast information about Australia in a nice and easy to digest blog post that regularly updated. At the time when I write this, we’re in the middle of the validation stage of the next features that we want to provide. The idea is that this new feature can simplify the process for potential international students who wish to study and apply for English school in Australia.
+
+### Technology Stack
+
+I take an opportunity with this product development to learn technology that I don’t have the chance to try in my day-to-day work. These are a list of technology that I use to build passporr.
+
+1. **[Flask](https://palletsprojects.com/p/flask/) (Python web framework)**
+   I use Flask for the backend for this platform. Flask here serve as a RESTFul API to the client side application. I used `flask_restful` to easily provide a RESTFul interface and SQLAlchemy to provide orm wrapper over database.
+2. **[NextJS](https://nextjs.org/) (React server-side rendering done right!)**
+   For the client application, I use NextJS, which is a React framework for server-side rendering. This framework has a safe ton of my time for doing SSR and also dealing with SEO. I can’t tell how bad is my experience before with Palletio and The Baby Club to deal with SEO on React. With the client app, I also use bootstrap for styling and `styled-components` for CSS-in-js framework.
+3. **[Postgres](https://www.postgresql.org/) (Database)**
+4. **[nginx](https://www.nginx.com/) (Web server and reverse-proxy)**
+5. **[GhostJS](https://ghost.org/)**
+   I use GhostJS as a blog engine to store all of the blog content and provide a good experience for a content writer to write content. I use GhostJS API to fetch the content and display it in the main website (I don’t use GhostJS view for blog).
+6. **[Docker](https://www.docker.com/)**
+   I use Docker in conjunction with `docker-compose` for local development and also deployment to production.
+
+### SaaS Service
+
+Besides the main technology that I've described above, I also use several sass platform to serve some of the features in passporr platform such as error monitoring, application hosting, email smtp server, blogging engine. These are the stacks of sass provider that help me to quickly build passporr and push it from development to be up in the production.
+
+1. [Digital Ocean](https://digitalocean.com)
+   I use Digital Ocean to host [Passporr.com](https://passporr.com). I pick DO because it’s a plain VPS where I have so much flexibility that I can do with it. I also like a lot their one-click apps marketplace. In addition to it, we also got \$10k credits from their [Hatch](https://www.digitalocean.com/hatch/) program.
+2. Error Monitoring Service
+   I use [Sentry](https://sentry.io/welcome/) for logging any error for both backend and frontend application. I also use [LogRocket](https://logrocket.com/) to get the video capture from what's user actually doing when the error occured.
+3. [Sendgrid](http://sendgrid.com)
+   I use Sendgrid is an email delivery platform. What I like about their service is, they offer analytics out of the box for email tracking. Their python sdk also easy to work with.
+4. [Mailchimp](https://mailchimp.com)
+   I use mailchimp to run the automation for newsletter and subscription and also to capture contact information. Even though Sendgrid offers a similar feature, I’ve used MailChimp previously to set up marketing automation, and it works pretty well.
+5. Analytics Service
+   I can’t emphasise how vital is analytics to your product, especially for your MVP. I use analytics mostly to understand how our users use your product and validate whether the features are something that resonates with them. For analytics I use [Google Analytics](https://marketingplatform.google.com/about/analytics/) in combination with [Heap Analytics](https://heap.io/). I also use [Hotjar](https://www.hotjar.com) to provide a heatmap on how user navigate in the website and also capability for users to provide feedback
+6. [Tawk.to](https://www.tawk.to/)
+   Monitor and chat with the visitors on your website, mobile app or from a free customizable page. Imagine this as a free tier for intercom.
+
+## What did I learn
+
+Throughout building passporr for the last 4 months (part-time), I learned a ton of stuff. I’m fortunate to be able to work in a company that allows me to learn about the lean startup method. Therefore some of the learnings I got from CultureAmp, I can also apply to passporr. These are some of the learnings from building passporr.
+
+1. **Talk to real people**
+   I can’t emphasise more on how important it is to talk to real people to validate your ideas. You’d probably think to validate it through a survey is enough, NO, you need to speak with people and lot of them face-to-face. Validating an idea with a survey or asking them through social media / messaging platform won’t give you 100% confidence. It is because there’s a possibility of bias in their answers.
+
+2. **Build as minimal as possible the features that you still want to validate**
+   One of the learnings I got while implementing lean startup method at CultureAmp was until the features get validated don’t put too much effort into building it correctly / robustly. Since we still trying to prove some of the ideas in our head, passporr still have a higher chance to pivot along the way. This is where I think Speed over quality (You can argue me over this belief) is essential. I can spend weeks or months on building a well-design and robust application. But when we then decide to pivot along the way (because it turns out the features not give us many tractions), I’ll need to scrape the previous code and build a new one.
+
+   Furthermore, this is also the learning I experienced when I built palletio. At that time, I spent weeks building integration with payment gateway. By the time I release it, we have lost the momentum, and people no longer interest to use and pay through the platform.
+
+3. **Use SSR if you care about SEO / have a good link preview on social media**
+   I’m not saying that this statement applies to every Single-page-application. But from my experience even with the library such as Helmet, it still complicated to have a meta tag rendered correctly for SPA. Before use NextJS. For palletio as an example, I need to manually map all of the client routes to be able to get rendered from the server-side to get a correct meta tag. At that time, as far I understand Helmet library only render the meta tag on the client-side after the server delivers the html. I need the meta tag to render correctly from the initial page load because that’s what social media crawl-engine look.
+
+4. **Take advantage of any pre-accelerator program**
+   At the time we start to build passporr, startup school 2019 was opening their application submission then We applied for it and got accepted. Through that program, we got several high-value deals that make me possible to build this platform quickly. Some of the deals that we got from startup school 2019:
+
+   - [Digital Ocean Hatch Program](https://www.digitalocean.com/hatch/)
+   - [AWS Activate](https://aws.amazon.com/activate/)
+   - [GCP Credit](https://cloud.google.com/developers/startups/)
+
+   Another program that we applied and got accepted is [Sendgrid Accelerate](https://sendgrid.com/accelerate/). With this program, we got
+
+   - 12 months of credits at \$329.95 per month (commencing from upgrading to a paid plan)
+   - Access to a series of virtual and in-person workshops
+   - Full customer support access
+
+## How's Passporr Going and What's Next
+
+### Stats
+
+We've learned a lot since the first time we soft launch passporr on September 1, 2019. These are some stats for passporr, since we launch.
+
+- We talked to 30 more people
+- We send 89 emails and capture 25 new contacts (people subscribes to our newsletter or subscribe to get school recommendation)
+- Wrote 24 blog posts
+
+![Google analytics dashboard](https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1569141362/Blog/GA-stats-22-09-2019.png)
+
+![Sendgrid analytics](https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1569141362/Blog/Sendgrid-Analytics-22-09-2019.png)
+
+### What's next
+
+In the next couple of weeks, passporr will launch a couple of things:
+
+- A tool that can help people find more information about the visa required to visit a particular country
+- A platform for a potential international student to apply for English school in Australia and apply for a student visa

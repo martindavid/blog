@@ -1,0 +1,395 @@
+---
+title: PyCon 2018 Notes
+date: '2018-08-27 10:30:24'
+tags: ['python', 'conference']
+draft: false
+summary: Last weekend I attended PyCon AU 2018 in Sydney. This is the first conference that I attend that specifically focus on one programming language. I've been to a couple of tech conferences before like YOW Conference and NDCSydney but both are general technology conferences. This post is my personal notes on all of the sessions that I attend during the conferences. One thing that I learn from this conference is, python community is really big and very welcoming, and it's been a great time for me to learn and meet with many people from that conference.
+images:
+  [
+    'https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1535372064/Blog/pycon2018-nametag.png',
+  ]
+layout: PostLayout
+---
+
+Last weekend I attended [PyCon AU 2018](https://2018.pycon-au.org/) in Sydney. This is the first conference that I attend that specifically focus on one programming language. I've been to a couple of tech conferences before like [YOW Conference](https://yowconference.com.au/) and [NDCSydney](https://ndcsydney.com/), but both are general technology conferences. This post is my personal notes on all of the sessions that I attend during the conferences. One thing that I learn from this conference is, python community is really big and very welcoming, and it's been a great time for me to learn and meet with many people from that conference.
+
+# Day 1 - Special Tracks day
+
+This is the first day of the conference, and there are four separate tracks for people to attend (Django, Security, IOT and Education).
+
+## Writing to be understood (Django Track)
+
+### **Speaker**: Merrin Macleod
+
+<YoutubeEmbed id="q9W4F6elTiw" />
+
+The Aim of discourse - Communication Framework
+
+Four element of communication
+
+- Encoder (Expressive Discourse)
+- Decoder (Persuasive Discourse)
+- Referent (Referential Discourse)
+- Signal (Literary Discourse)
+
+Foucault on discourse:
+
+- Reflect and perpetuates power imbalance
+- Restrict what we can say
+- Signals community belonging (use jargon,etc)
+
+### How to apply it?
+
+**Think about your goals**
+
+- What is the message all about? (Code commit, PR, review comment)
+- What’s the purpose, outcome of the message? (Get help, try to perusade others)
+
+**Think about your audience**
+
+- Number of audience (Internal vs open source software)
+- Do they know the jargon?
+- Context of the message (is it for busy person, professional vs casual)
+
+**Write**
+
+- Start with structure
+- Sometime we can start with the main point first
+- Follow the conventions (for writing PR, commit, documentation)
+- Use plain English
+
+**Edit**
+
+- Read back all of the words we wrote (proff-read it)
+- Grammar and Spelling check
+- Check for coherence
+
+**Use of plain english**
+
+- Shorten the sentences
+- Use active instead of passive voice
+- Separate things into list (instead of write it as a full sentences, just put it as a list)
+- Prefer easy words
+
+## Creating Solid APIs (Django Track)
+
+### **Speaker**: Rivo Laks
+
+<YoutubeEmbed id="MEba95kL0eo" />
+
+This is a good introduction talk to some best practice on developing APIs, but most of the things in his talk I have been implemented it in my work.
+
+## Securing your company's data: Encryption, Deletion and other best practices (Security Track)
+
+### **Speaker**: Elissa Shevinsky
+
+<YoutubeEmbed id="sTluS_O7-No" />
+
+Steps:
+
+- Minimise data collected / delete data
+- Encrypt data
+- Manage access
+- Security awareness
+- Empower your CSO
+
+## Student Showcase (Education Tracks)
+
+I was suprise when I knew that there is 400% increase from last year PyCon on student that give a talk. And also on this day, there is one session that is allocated specifically to show case high school student works that are using python programming language. It's impressive to see that most of the works presented are using machine learning at various level.
+
+<YoutubeEmbed id="QNAgPjbn0Ws" />
+
+# Day 2 - Main Conference
+
+## Keynotes - Techfugees
+
+### **Speaker**: Annie Parker
+
+Today keynote is really englightning. The keynote tell us about the journey of [Techfugees](https://techfugees.com/chapters/australia/) in Australia and how they leverage technology to solve issues around refugee.
+
+<YoutubeEmbed id="GlMVcZfFFGI" />
+
+## Session 1 - Describing Descriptor
+
+### **Speaker**: Matthew Egan
+
+<YoutubeEmbed id="lmcgtUw5djw" />
+
+- **setattr**
+- Using `@property` decorator and `@<property_name>.setter` decorator
+- Two type of descriptor
+- Data Descriptor
+- Non-data descriptor
+
+Non-Data descriptor
+e.g. functool.partial method
+
+Use case of Data Descriptor
+
+- Validation (custom)
+- For example, look at Django foreign key implementation
+- Custom error message
+
+## Session 2 - What is the most common street name in Australia
+
+### **Speaker**: Rachel Bunder
+
+<YoutubeEmbed id="eGgBU2Pl6iA" />
+
+It’s a personal project leveraging data openstreetmap API
+
+- Look at overpass turbo API (overpass-turbo.eu)
+- Look at shapely library. She use this library to merge linestring geometry features from the data. (Openstreetmap data contain a field called geometry)
+
+Tips for personal data project
+
+- Start small (instead of look for the whole australia, start with Sydney first)
+- Choose something familiar with your daily life
+- Check your biases
+- Constant vigilance (always..always.. check your work)
+
+End result -> The most common name street in Australia
+
+- Park
+- Railway
+- George
+- Church
+- Victoria
+
+## Session 3 - Why you should care about types. How python typing help to scale a team at Facebook
+
+### **Speaker**: Luka Sterbik
+
+<YoutubeEmbed id="h1cD3a7ys8Q" />
+
+from typing import Unions
+
+- Unions return different type within the same function
+
+Look at Typevars
+
+_mypy_ is a typechecker library use to validate python typing
+
+Advanced topic in typing:
+
+- Forward references
+- TYPE_CHECKING
+- @overload
+- Pyre
+- Facebook developed type check library
+- The speaker claimed that it’s faster than any other type check library out there
+
+How to implement type in python project
+**New Project**
+
+- Need to be 100% coverage using type
+- Integrate type-check with CI/CD pipeline
+
+**Legacy project**
+
+- Start with part of the code that has no or less dependencies to others.
+
+Look at monkeytype
+
+- it’s a library from instagram to generate stub file for python code
+- Will automatically apply type to the existing code after it generates the stub file
+
+## Session 4 - Running Python web applications in Docker
+
+### **Speaker**: Tim Heap
+
+<YoutubeEmbed id="9L6x2j-7eVQ" />
+
+Pretty much intro to how you can dockerize your python application. I've done this at work for the `python-microservice-template`
+
+## Session 5 - Context Managers: You Can Write Your Own!
+
+### **Speaker**: Daniel Porteous
+
+<YoutubeEmbed id="-tpn94V9vK4" />
+
+A brief introduction to Context Manager in python, start from the context manager using boilerplate structure to using decorator `contextlib.contextmanager`
+
+## Session 6 - Refactoring Code With the Standard Library
+
+### **Speaker**: John Reese
+
+<YoutubeEmbed id="9USGh4Uy-xQ" />
+
+## Session 7 - Day 2 Closing Keynotes
+
+### **Speaker**: Tom Eastman
+
+<YoutubeEmbed id="9E3qhqWFJ2c" />
+
+Take away:
+
+- There's no upper limit for learning. The more you learn the more / broaden knowledge you’ll get
+- New knowledge deepens your understanding of waht you already know.
+- We’re poor judges of when we’re learning well or not
+- High stimuli/low value
+- Sometime we learn something that is not solving the actual problem we’re trying to solve.
+- Transfer what we learn by teaching it to others or implement it in a project.
+
+Look at Carol Dweck’s theory of “fixed vs growth” mindsets
+
+# Day 3 - Main Conference
+
+## Session 1 - Guide to your own AI application in 3 steps
+
+### **Speaker**: Norah Klintberg Sakal
+
+<YoutubeEmbed id="ymRr0AkMb5E" />
+
+Use Case: Eye shape classification (http://getshades.co)
+Steps:
+
+- Ideation
+  - Find a topic that we’re interesting about (Looking for a day2day problem)
+- Create dataset
+  - Crop eye shape from 200 image of celebrity
+- Train
+  - Use pretrain weight
+  - locked the layer
+  - REL
+  - Softmax
+
+Accurracy for the first run : 90 - 95%
+
+Github Repo: github.com/norahsakal/pyconau-2018-shades
+
+## Session 2 - Web without Javascript
+
+### **Speaker**: Russell Keith-Magee
+
+<YoutubeEmbed id="2XSeNQyPlTY" />
+
+Demo: bit.ly/web-without-js
+
+Interesting project that try to bring python into web world
+
+- pybee.org/Ourroboros
+- Brython project
+- Skulpt project
+- pybee.org/batavia
+
+## Session 3 - FP demystified
+
+### **Speaker**: Eugene Van den Bulke
+
+<YoutubeEmbed id="p9_r36fIrqc" />
+
+This is an interesting talk from a guy who also just recently start learning functional programming. He try to describe FP concept in python.
+
+Checkout a FP course from Professor Frisby (egghead.io)
+
+Box package in python. A package that can be use to compose function
+
+## Session 4 - You Don't Need That
+
+### **Speaker**: Christopher Neugebauer
+
+<YoutubeEmbed id="imW-trt0i9I" />
+
+It's suprising for me that turns out, you don't actually need to implement some of the design pattern in Python. Because unlike language such as Java or C#, some of the design pattern has been built internally inside python language.
+
+Focus: Implement Design Pattern in a pythonic way
+
+Use case:
+– Better communicate with other developer in different language
+
+**Singleton**
+Implementation in python is in Modules system. Python doesn’t need singleton, because Modules are objects.
+
+**_Dependency Injection_**
+Provide dependencies to classes as constructor arguments
+
+- In python we can just pass in the function directly???
+- In python all\* variables are writeable
+- In python all modules & function are variables
+
+**Iterator Pattern**
+For loop in python is an example of iterator pattern
+The best way instead of using For Loop is Generator (Lookup for generator)
+
+**Visitor Pattern**
+Perform a common operation on a collection
+In python it can take advantage of generator function inside of the class
+
+> Python doesn’t need visitor, because generator has separated the operation for the collection
+
+**Factory pattern**
+In python you can just use function to return the instance of the class (object)
+
+Checkout http://python-patterns.guide/ website to see an example of how to implement design pattern in Python
+
+## Session 5 - Publishing (Perfect) Python Package to PyPi
+
+### **Speaker**: Mark Smith
+
+<YoutubeEmbed id="QgZ7qv4Cd0Y" />
+
+How to create your package
+
+- Create setup.py file
+
+  - Running the setup file pip install -e .
+
+- Things to do before publish the project
+- Create gitignore file. -> gitignore.io
+- chooselicense.com
+- add classifiers metadata. -> pypi.org/classifiers
+- Create a README
+  Description should contain:
+  - Description
+  - Installation
+  - Usage
+- Add the markdown to setup.py
+- Source Distribution
+- `python setup.py sdist`
+- Add manifest.inf to include test, license and pipfile
+- `$ pip install check-manifest`
+- `$ check-manifest --create`
+- Publish it
+- build it -> `python setup.py bdist_wheel`
+- Push to PyPI
+- use twine (\$ pipenv install -dev twine)
+
+Look at pipenv
+Setup.py vs pipfile
+– Pipfile is for development requirements
+
+Make it better
+Look at tox.ini file
+
+```
+$ pip install tox
+$ tox
+```
+
+Integrate tox with CI/CD pipeline so that after it run the test, build it and publish it to PyPI
+
+Remove all of the boilerplate and all of the repetitive tasks above using Cookiecutter
+`$ cookiecutter gh:ionelmc/cookiecutter-pylibrary`
+
+## Session 6 - People are coming to my workshop, now what?
+
+### **Speaker**: Nicholle James
+
+<YoutubeEmbed id="pbXwj_5sw78" />
+
+Tips:
+
+- Target Audience
+- Specify level of expertise of the audience
+- Change the title so that it will explicitly say what’s the required level of expertise (beginner, intermediate, advanced, etc)
+- Content
+- If using image, make it explicit with direction (where to click -> with arrow or highlighting)
+- Split the content if it’s too long into separate section. If it’s displayed on screen, put it one section at the time (don’t display all of the content all at once)
+  - 3 - 5 items per page maximum
+- If it's a code content (test it before we show it to the audience)
+- If no one asking a question, provide a sticky notes so that people who don’t want to ask directly can just write it down
+
+# Conclusion
+
+It's been a great experience for me to attended PyCon 2018, where I can meet with lot of brillian people and learn a lot from them. I also feel that python community is very welcoming to people who are new to python and that's what makes me want to come again to this conference next year. (Or maybe I can get a chance to give a talk there??)

@@ -1,0 +1,137 @@
+---
+title: 'Make a meaningful git commit message with Semantic Commit Message'
+date: '2020-06-20 22:10:10'
+tags: ['development']
+draft: false
+summary: The first time I was introduced to version control (especially git), I only think of version control as an application that helps me to store the history of my code. So when bad things happened, I can see the history and revert back to the last state of "good code" in my repository. Not until I use it more frequent, I learn that it's more than a version control, it also a collaboration tool where you write a history of your repo journey and share it with other developers. That's when I learn the benefit of having a good commit message can make you collaborate better with others.
+images:
+  [
+    'https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1592660347/Blog/git-commit-history.jpg',
+  ]
+layout: PostLayout
+---
+
+The first time I was introduced to version control (especially git), I only think of version control as an application that helps me to store the history of my code. So when bad things happened, I can see the history and revert back to the last state of "good code" in my repository.
+
+Not until I use it more frequent, I learn that it's more than a version control, it also a collaboration tool where you write a history of your repo journey and share it with other developers. That's when I learn the benefit of having a good commit message can make you collaborate better with others.
+
+In this post, I'll share how to write a good commit message can help you be a better developer and how conventional commit, a recent convention that I learn and use can make it even easier to write a better commit message.
+
+## The early days
+
+In my early days using git, I never put much effort into the way I write my commit message. Most of my commit message would be like.
+
+```bash
+commit e71fcf2022b6135e18777bdc58c2ac3180202ec7
+Author: mvalentino
+Date: Tue Apr 24 01:25:48 2015 +1000
+Extract out information for payment page
+
+commit d1952883b05b685f2d22e4c41b4fbc4362fd6bd0
+Author: mvalentino
+Date: Mon Apr 23 22:16:50 2015 +1000
+[WIP] stripe integration
+
+commit 74b8920d96e3e09d5cd958ffa369a0e3c86a6851
+Author: mvalentino
+Date: Mon Apr 23 21:09:11 2015 +1000
+Generate link for payment
+
+commit b02255b25eed57c7595504c66233d5ee3024190c
+Author: mvalentino
+Date: Mon Apr 23 18:32:40 2015 +1000
+[WIP] Search widget auto places
+```
+
+I will never even bother to utilise the commit body. My go-to command will always `git commit -m <commit message>`. When you're working in the company which create a PR, do code review is not a common thing, no one even bothers to ask me to write a good commit message. And it ends until I move to a company with a good engineering culture where I learned to write a commit message that explains what it means as part of the work that I do.
+
+In my learning to find a better way to write a commit message, I read this [article](https://chris.beams.io/posts/git-commit/) from a developer name Chris Beams. In that article, I first read the term _"atomic commit"_. From that article, I learned 7 rules to make a better git commit message (You can read the article to know more about the detail for each rule):
+
+> 1. Separate subject from body with a blank line
+> 2. Limit the subject line to 50 characters
+> 3. Capitalise the subject line
+> 4. Do not end the subject line with a period
+> 5. Use the imperative mood in the subject line
+> 6. Wrap the body at 72 characters
+> 7. Use the body to explain what and why vs how
+
+Fast forward to two months ago, I keep trying to apply those rules above and also by reading other developers commit message and use it for a reference to structure my commit message. One thing that keeps me struggling to write a good commit message is to determine which changes belong to what message. Every time I want to commit my changes, there's always this mental process to try to divide the changes so it can be grouped as "atomic" as it can be.
+
+## Conventional commits to the rescue
+
+Then until my colleague introduce this convention called [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), it starts to get easier to write a clear commit message. Because it specifies a set of structures, so you know what type of changes belong to what kind of message.
+
+In conventionalcommits, there are 16 specifications that dictate what's required from the commit message. I may haven't followed all specified there, but in general, I always try to follow the main convention that defines the structure of the commit message title.
+
+In shorts, for every commit message, it will always have this structure
+
+```bash
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+With the first line of the commit message will be like:
+
+```
+feat: add hat wobble
+^--^  ^------------^
+|     |
+|     +-> Summary in present tense.
+|
++-------> Type: chore, docs, feat, fix, refactor, style, or test.
+```
+
+where the `<type>` can be one of the below:
+
+- `feat`: (new feature for the user, not a new feature for build script)
+- `fix`: (bug fix for the user, not a fix to a build script)
+- `docs`: (changes to the documentation)
+- `style`: (formatting, missing semi colons, etc; no production code change)
+- `refactor`: (refactoring production code, eg. renaming a variable)
+- `test`: (adding missing tests, refactoring tests; no production code change)
+- `chore`: (updating grunt tasks etc; no production code change)
+
+By incorporating the above convention, now I can quickly determine what changes have I made and what would the commit message for the changes looks like. With that format, you as a developer can immediately know (or at least guess), what's changed in the specific commit. If there's an issue with a new merge to the master branch, you can also quickly scan the git history to figure out what changes possibly can cause the problem without the need to look at the differences.
+
+As the conventional commit website stated as well, there are several good reasons to use this convention.
+
+- Automatically generating CHANGELOGs.
+- Automatically determining a semantic version bump (based on the types of commits landed).
+- Communicating the nature of changes to teammates, the public, and other stakeholders.
+- Triggering build and publish processes.
+- Making it easier for people to contribute to your projects by allowing them to explore a more structured commit history.
+
+## How I use it in the real world
+
+I use Jira in my work for project management, and it also has integration with Github enabled. Recently, I learned if you put the Jira ticket number in your commit message, Jira can automatically detect it and can be embedded directly in a card that you are currently working on in Jira. It's works well with the convention as I can put the Jira ticket number as an `<optional scope>` part from the message. So now every time I work on a task from Jira, my commit message will be
+
+```bash
+<type>(<jira ticket number>): commit title
+```
+
+An example from one of the commit message that I recently made
+
+```bash
+refactor(FOW-1327): refactor authentication class
+
+add new class name `userRepo` and extract out api call to `/api/v1/users/me` from authentication to separate class and use the new class to contain all of external api call related to the user data
+```
+
+and in Jira, it will be reflected as well.
+![Jira Issue with Github Integration](https://res.cloudinary.com/martin-labs/image/upload/v1592660464/Blog/github-jira-integration.png)
+
+Another example in my workplace that uses this convention is the open-source design system library called [Kaizen](https://github.com/cultureamp/kaizen-design-system/blob/master/CONTRIBUTING.md#conventional-commit) where conventional commit format (especially `fix` and `feat`) is being used to also generate a description in the package release CHANGELOGs.
+
+## Conclusion
+
+After all of this time I've been meaning to improve the way I write a git commit message, I'd say learning about conventionalcommits has helped me to be a better a developer. Now when I looked at the git history of my repo, I can quickly figure out what's happened recently in the repo and guess the changes just by looking at the commit message.
+
+## Resources:
+
+- Cover Photo by [Yancy Min](https://unsplash.com/@yancymin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/git-commit?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [conventionalcommits](https://www.conventionalcommits.org/en/v1.0.0/)
+- [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/) by Chris Beams
+- [The art of the commit](https://alistapart.com/article/the-art-of-the-commit/) by David Demaree

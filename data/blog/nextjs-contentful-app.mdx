@@ -1,0 +1,525 @@
+---
+title: Create Blog app with NextJS and Contentful API
+date: '2019-09-29 12:42:13'
+tags: ['javascript', 'reactjs']
+draft: false
+summary: I have a good experience building a web application using React and NextJS framework. In my last blog, I wrote about setting up a Flask and NextJS application using Docker. This time in this post, I'll share a tutorial to build a simple blog application using NextJS and Contentful. The steps that I describe here is similar to what I've done to display a blog content in Passporr. Please stay tuned, and hopefully, this tutorial will help you to also display a blog in your website without much hassle.
+images:
+  ['https://res.cloudinary.com/martin-labs/image/upload/v1569751197/Blog/nextjs-contentful-app.svg']
+layout: PostLayout
+---
+
+I have a good experience building a web application using React and NextJS framework. In my [last blog](/software-development/setup-flask-nextjs-app-with-docker/), I wrote about setting up a Flask and NextJS application using Docker. This time in this post, I'll share a tutorial to build a simple blog application using NextJS and [Contentful](https://www.contentful.com/). The steps that I describe here is similar to what I've done to display a blog content in [Passporr](https://passporr.com/blog). Please stay tuned, and hopefully, this tutorial will help you to also display a blog in your website without much hassle.
+
+I've learned in my experience, for your website to get better at SEO ranking, you have to build a lot of content for your website. And what are a better way to have a lot of content other than generating it through the blog? But what if you build a website or application that's not intended to display a blog. For example, you start a website/sass product with `create-react-app` template and overtime you want to add functionality to display a blog content. Unless you build your website with a platform that already ready for it (e.g. [Wordpress](https://wordpress.com/), [GhostJS](https://ghost.org), and many other CMS), you may need either:
+
+- Build from scratch your own simple CMS
+- Build an entire blogging feature using an existing CMS and publish it under a subdomain of yours.
+
+The first option may be feasible if you're not in a rush or want to take the opportunity to learn more about building a CMS. The second option can be done quickly, but you'll miss the organic traffic to your main domain. And then there's a third option, which uses a headless CMS. According to [Wikipedia](https://en.wikipedia.org/wiki/Headless_content_management_system),
+
+> A headless content management system, or headless CMS, is a back-end only content management system (CMS) built from the ground up as a content repository that makes content accessible via a RESTful API for display on any device.
+
+So it's basically a full-backend service with the database and also the editor and everything set up for you without any view representation. There are several headless cms examples out there. Some of those, for instance, are In this post, I'll show an example of how to build a blog feature in a NextJS website with Contentful headless cms. This is what we're going to develop in this tutorial.
+
+![Nextjs Blog Application](https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1569845255/Blog/blog-application.gif)
+
+# Create Contentful Account
+
+Before getting started, let's first set up the backend for it. You need to register for a contentful account and create a basic blog template that Contentful have.
+
+After you sign up, you'll be asked to create a new space, which is basically a project place for your backend. Let's choose the existing template for space now, the blog example.
+
+- Select free space
+  ![Select free space](https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1569721034/Blog/space-type.png)
+
+- Name the space, and choose an example space and click on `blog` tab from the options. For this example, I will name the space `blog-tutorial`. Then confirm it.
+  ![Put space name](https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1569721034/Blog/space-details-choose-blog.png)
+
+After you confirm to create the space, Contentful will create the space for you. This blog space will contain a simple structure for a blog and a sample of four blog post. After space gets created, you'll be redirected to the home page where you can see from the navbar a menu. Here you can see the data structure for your blog in `Content Model` menu and samples of the blog post in `Content`. As you can see as well, everything is set up for you, including WYSIWYG editor.
+![Contentful Editor](https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1569837724/Blog/contentful-editor.png)
+
+## Create Contentful API token
+
+Before we move on, we need to also create an API token for our NextJS application. You can do so by selecting on `Settings` and then `API keys`. In the `API keys` page, click on `Add API Key`. In the API Key page, you can fill in all the textbox there. The things that you need to write down is the `Space ID` and `Content Delivery API - access token`
+![Create API Token](https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1569838574/Blog/api-keys.png)
+
+# NextJS Blog Application
+
+## Index Page
+
+For the NextJS application, We'll start building the app using a starter project that I have set up before. The [starter kit](https://github.com/martindavid/nextjs-typescript-starter) will contain a basic NextJS application with typescript, `styled-components` and Docker already set up for you. To get started let's clone the repo into our machine (You can change the `<project name>` into whatever you want to name the folder). We also will install the dependency required for the project.
+
+```bash
+# clone the initial project repo
+$ git clone git@github.com:martindavid/nextjs-typescript-starter.git <project name>
+
+# install dependencies package
+$ npm i --save contentful moment
+```
+
+The following code and steps will walk through us on how to add the blog component into the next application.
+
+1. Create an environment variable in the `next.config.js`.
+
+```javascript
+const nextConfig = {
+
+  ....the rest of the code
+
+  env: {
+    // Will be available on both server and client
+    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
+    CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN
+  }
+};
+```
+
+2. Create a new folder under `pages` and name it `blog`, after that also add a new file under `blog` called `index.tsx`. In the `index.tsx`, we will write a basic react component.
+
+```typescript
+import React from 'react'
+import { Layout } from 'components/layout'
+
+type BlogPageProps = {
+  entries: Array<BlogPost>
+}
+
+export default class BlogPage extends React.Component<BlogPageProps> {
+  render() {
+    const { entries } = this.props
+    return (
+      <Layout>
+        <h1>Blog</h1>
+      </Layout>
+    )
+  }
+}
+```
+
+At the moment, it will only show heading with text. We'll add more into the components after we set up the service class for contentful.
+
+3. Create a service class that will call contentful API and fetch the data. In the following part, I'll use a pattern that I'm currently using in all of my work for centralising API call into a service class. Inside `services` folder, I'll create two files, `blog.ts` and `blog.types.ts`. In the `services/blog.types.ts`, we'll store types for responses from Contentful API.
+
+```typescript
+export type Author = {
+  name: string
+  phone: string
+  shortBio: string
+  title: string
+  email: string
+  company: string
+  twitter: string
+  facebook: string
+  github: string
+}
+
+export type HeroImage = {
+  imageUrl: string
+  description: string
+  title: string
+}
+
+export type BlogPost = {
+  id: string
+  body: string
+  description: string
+  publishedDate: string
+  slug: string
+  tags: Array<string>
+  title: string
+  heroImage?: HeroImage
+  author?: Author
+}
+```
+
+Next, on the `services/blog.ts` we'll add the service class to call the contentful API.
+
+```typescript
+import { ContentfulClientApi, createClient } from 'contentful'
+import { Author, HeroImage, BlogPost } from './blog.types'
+import moment from 'moment'
+
+export class BlogApi {
+  client: ContentfulClientApi
+
+  constructor() {
+    this.client = createClient({
+      space: process.env.CONTENTFUL_SPACE_ID,
+      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+    })
+  }
+
+  // ...the rest of the code
+}
+```
+
+Here we create a class name `BlogApi`. It also imports `ContentfulClientApi` type and `createClient` method so that we can use it to instantiate the contentful client in the constructor.
+
+Next, we'll add two methods to fetch all blog entries and fetch blog post using its id.
+
+```typescript
+  async fetchBlogEntries(): Promise<Array<BlogPost>> {
+    return await this.client
+      .getEntries({
+        content_type: "blogPost" // only fetch blog post entry
+      })
+      .then(entries => {
+        if (entries && entries.items && entries.items.length > 0) {
+          const blogPosts = entries.items.map(entry => this.convertPost(entry));
+          return blogPosts;
+        }
+        return [];
+      });
+  }
+
+  async fetchBlogById(id): Promise<BlogPost> {
+    return await this.client.getEntry(id).then(entry => {
+      if (entry) {
+        const post = this.convertPost(entry);
+        return post;
+      }
+      return null;
+    });
+  }
+```
+
+Lastly, we'll add a helper method inside `BlogApi` class to map the response from the API to our type.
+
+```typescript
+convertImage = (rawImage): HeroImage => {
+  if (rawImage) {
+    return {
+      imageUrl: rawImage.file.url.replace('//', 'http://'), // may need to put null check as well here
+      description: rawImage.description,
+      title: rawImage.title,
+    }
+  }
+  return null
+}
+
+convertAuthor = (rawAuthor): Author => {
+  if (rawAuthor) {
+    return {
+      name: rawAuthor.name,
+      phone: rawAuthor.phone,
+      shortBio: rawAuthor.shortBio,
+      title: rawAuthor.title,
+      email: rawAuthor.email,
+      company: rawAuthor.company,
+      twitter: rawAuthor.twitter,
+      facebook: rawAuthor.facebook,
+      github: rawAuthor.github,
+    }
+  }
+  return null
+}
+
+convertPost = (rawData): BlogPost => {
+  const rawPost = rawData.fields
+  const rawHeroImage = rawPost.heroImage ? rawPost.heroImage.fields : null
+  const rawAuthor = rawPost.author ? rawPost.author.fields : null
+  return {
+    id: rawData.sys.id,
+    body: rawPost.body,
+    description: rawPost.description,
+    publishedDate: moment(rawPost.publishedDate).format('DD MMM YYYY'),
+    slug: rawPost.slug,
+    tags: rawPost.tags,
+    title: rawPost.title,
+    heroImage: this.convertImage(rawHeroImage),
+    author: this.convertAuthor(rawAuthor),
+  }
+}
+```
+
+Let's get back to the `blog/index.tsx` to add the `BlogApi` and fetch a list of the blog post there. In the `blog/index.tsx`, we'll add `getInitialProps` method so that it will implement the SSR and serve the content server-side.
+
+```typescript
+  static async getInitialProps() {
+    const api = new BlogApi();
+    const entries = await api.fetchBlogEntries();
+    return { entries };
+  }
+```
+
+We'll also want to modify the `render` method to render the list of blogpost.
+
+```javascript
+  renderBlogList = entries =>
+    entries.map((entry, i) => {
+      return (
+        <BlogBox
+          key={i}
+          id={entry.id}
+          slug={entry.slug}
+          imageUrl={entry.heroImage.imageUrl}
+          title={entry.title}
+          author={entry.author.name}
+          description={entry.description}
+          tags={entry.tags}
+        />
+      );
+    });
+
+  render() {
+    const { entries } = this.props;
+    return (
+      <Layout>
+        <h1>Blog</h1>
+        <div className="row mt-3">
+          {entries.length > 0 && this.renderBlogList(entries)}
+        </div>
+      </Layout>
+    );
+  }
+```
+
+As you can see from the above code listing, I create a helper method to render the collections of entry.
+
+## Detail Page
+
+We have halfway through completing the blog application. In this part, we'll build the detail for a single blog post. If you look back at Contentful page in the Content menu, you can see that the blog content is written in Markdown format. For that, we'll install new npm packages that will render a markdown content in the blog react component.
+
+```bash
+$ npm i --save react-markdown
+```
+
+After that, we need to add a new NextJS page under `blog` folder called `[slug].tsx`. We also need to add a new component called `BlogDetail`, which will accept a single `post` as props. The `BlogDetail` is a function component which basically only renders the content using `react-markdown`. Thanks also to NextJS dynamic routing, we can pass the blog entry slug and `[slug].tsx` will automatically parse it as a query object. With dynamic routing in NextJS we can have a url like `/blog/<slug>` instead of having query string in our url. This also will [improve](https://moz.com/learn/seo/url) our website SEO.
+
+```typescript
+import React from 'react'
+import { BlogPost } from 'services'
+import styled from 'styled-components'
+import ReactMarkdown from 'react-markdown'
+
+const Image = styled.img`
+  width: 80%;
+  height: 300px;
+  object-fit: cover;
+`
+
+type BlogDetailProps = {
+  post: BlogPost
+}
+
+export const BlogDetail = (props: BlogDetailProps) => {
+  const { post } = props
+  const mainTag = post.tags.length > 0 ? post.tags[0] : ''
+  return (
+    <article className="post-full post">
+      <header className="post-full-header">
+        <h1 className="post-full-title">{post.title}</h1>
+        <div className="meta text-center">{`${post.publishedDate} / ${mainTag}`}</div>
+      </header>
+      <figure className="post-full-image text-center">
+        <Image src={post.heroImage.imageUrl} alt={post.heroImage.title} />
+      </figure>
+      <section style={{ overflowY: 'inherit', marginBottom: '2em' }} className="post-full-content">
+        <ReactMarkdown source={post.body} />
+      </section>
+    </article>
+  )
+}
+```
+
+Lastly, to complete our blog detail page, we'll modify the code to include the `BlogDetail` component and call the service class to fetch the single blog entry.
+
+```typescript
+import React from 'react'
+import { BlogPost } from 'services'
+import styled from 'styled-components'
+import ReactMarkdown from 'react-markdown'
+
+const Image = styled.img`
+  width: 80%;
+  height: 300px;
+  object-fit: cover;
+`
+
+type BlogDetailProps = {
+  post: BlogPost
+}
+
+export const BlogDetail = (props: BlogDetailProps) => {
+  const { post } = props
+  const mainTag = post.tags.length > 0 ? post.tags[0] : ''
+  return (
+    <article className="post-full post">
+      <header className="post-full-header">
+        <h1 className="post-full-title">{post.title}</h1>
+        <div className="meta text-center">{`${post.publishedDate} / ${mainTag}`}</div>
+      </header>
+      <figure className="post-full-image text-center">
+        <Image src={post.heroImage.imageUrl} alt={post.heroImage.title} />
+      </figure>
+      <section style={{ overflowY: 'inherit', marginBottom: '2em' }} className="post-full-content">
+        <ReactMarkdown source={post.body} />
+      </section>
+    </article>
+  )
+}
+```
+
+Now we're going to test our website. You need to pass the `CONTENTFUL_SPACE_ID` and `CONTENTFUL_ACCESS_TOKEN` as an environment variable.
+
+```bash
+$ CONTENTFUL_SPACE_ID=<space_id> CONTENTFUL_ACCESS_TOKEN=<access_token> npm run dev
+```
+
+Replace the `<space_id>` and `<access_token>` with the value that you have from Contentful website. Now you can access the app from [http://localhost:3000](http://localhost:3000).
+
+### Deploy to Now
+
+To easily make it online, you can use a cloud service such as [Zeit](https://zeit.co) with their `now` cli. To publish it to now you can run
+
+```bash
+now -e CONTENTFUL_SPACE_ID=<space_id> -e CONTENTFUL_ACCESS_TOKEN=<access_token>
+```
+
+After it successfully published, you can access it through the url that the generates.
+
+## Bonus: Integrate SEO into our NextJS application
+
+In the beginning of this post, I mention that one of the reasons to have a blog in our website is to increase our SEO ranking. We have the blog ready for us, now let's do a small modification to provide our website with SEO tag and metadata. For that, we'll need to add some field to our Contentful blog structure and use `next-seo` to put the metatag in place.
+
+### Add meta data field in Contentful
+
+In the Contentful dashboard page, click on the `Content model` menu and select the `Blog Post` model.
+
+1. Click on `Add Field` button and add a new text field. Let's name it `Meta Title` then create it. You also to add another text field and name it `Meta Description`.
+2. Add another new field, select a media type and call it `Meta Image`.
+3. Update one of the blog content and fill the value for `Meta Title` and `Meta Description`, also upload an image for `Meta Image` field.
+
+### Put SEO in action
+
+With the new three additional fields in our contentful data structure, we also need to modify our NextJS application to reflect the changes. First, we'll add new fields in `blog.types.ts`.
+
+```typescript
+export type BlogPost = {
+  id: string
+  body: string
+  description: string
+  publishedDate: string
+  slug: string
+  tags: Array<string>
+  title: string
+  heroImage?: HeroImage
+  author?: Author
+  metaTitle: string
+  metaDescription: string
+  metaImage?: any
+}
+```
+
+We also need to update the `convertPost` method to map the meta tag fields.
+
+```typescript
+convertPost = (rawData): BlogPost => {
+  const rawPost = rawData.fields
+  const rawHeroImage = rawPost.heroImage ? rawPost.heroImage.fields : null
+  const rawAuthor = rawPost.author ? rawPost.author.fields : null
+  return {
+    id: rawData.sys.id,
+    body: rawPost.body,
+    description: rawPost.description,
+    publishedDate: moment(rawPost.publishedDate).format('DD MMM YYYY'),
+    slug: rawPost.slug,
+    tags: rawPost.tags,
+    title: rawPost.title,
+    heroImage: this.convertImage(rawHeroImage),
+    author: this.convertAuthor(rawAuthor),
+    metaTitle: rawPost.metaTitle,
+    metaDescription: rawPost.metaDescription,
+    metaImage: rawPost.metaImage ? rawPost.metaImage.fields.file.url.replace('//', 'http://') : '',
+  }
+}
+```
+
+After we update the service class, next, we need to also update the blog detail page to include the meta tag. For that, we'll use `next-seo` package.
+
+```bash
+$ npm i --save next-seo
+```
+
+Firstly, we need to update `_app.tsx` to include a default SEO configuration. We can override the default configuration in each page using `NextSeo` component. We'll create a new constant for default SEO configuration.
+
+```typescript
+const DEFAULT_SEO = {
+  title: 'Blog Tutorial Web',
+  description: 'Awesome blog tutorial website',
+  openGraph: {
+    type: 'website',
+    locale: 'en',
+    title: 'Blog Tutorial website',
+    description: 'Awesome blog tutorial website',
+    site_name: 'BlogTutorial',
+  },
+}
+```
+
+We'll also need to update the render method for this component.
+
+```typescript
+// import the component on the top
+import { DefaultSeo } from 'next-seo'
+```
+
+```typescript
+// Update the return from the render method
+return (
+  <>
+    <DefaultSeo {...DEFAULT_SEO} />
+    <Component {...pageProps} />;
+  </>
+)
+```
+
+After we update `_app.tsx`, if you inspect the element and look at the `<head>` part now you can see the meta description being rendered.
+![Head element](https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1569928797/Blog/nextjs-contentful-meta-tag.png)
+
+Finally, we need to update `[slug].tsx` to override the default SEO config to reflect the meta tag field for a single blog entry.
+
+```typescript
+// Import the NextSeo component on top of the file
+import { NextSeo } from 'next-seo'
+```
+
+```typescript
+// Update the render method to include the NextSeo component
+
+<NextSeo
+  openGraph={{
+    type: 'article',
+    title: post.metaTitle,
+    description: post.metaDescription,
+    images: [
+      {
+        url: post.metaImage,
+        width: 850,
+        height: 650,
+        alt: post.metaTitle,
+      },
+    ],
+  }}
+  title={post.metaTitle}
+  description={post.metaDescription}
+/>
+```
+
+# Summary
+
+To have a good SEO strategy for your website, we need a lot of good content on our website. One of the ways to have that content is through a blog.
+
+Integrating a CMS on the existing website may take time and effort. If we’re using a current CMS solution, we may need to set it up in a different subdomain.
+
+In this post, I’ve shown you how to build a simple blog application using Next.js and Contentful headless CMS. A headless CMS like Contentful is a platform that removes all of the hassles to create a content management system.
+
+It also provides flexibility to set up a structure of the content that we need and the view that we want to have for our blog. I hope this tutorial can give you an idea of how to incorporate a blog into your website easily.
+
+You can find the source code for this tutorial [here](https://github.com/martindavid/nextjs-contentful-app)
+
+### Resource/Link
+
+- https://en.wikipedia.org/wiki/Headless_content_management_system
+- https://moz.com/learn/seo/url

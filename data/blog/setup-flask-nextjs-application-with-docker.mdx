@@ -1,0 +1,255 @@
+---
+title: Setup Flask, NextJs Application with Docker
+date: '2019-09-23 17:36:03'
+tags: ['flask', 'reactjs', 'nextjs', 'docker']
+draft: false
+summary: In this post, I'll share how I set up my local development using Docker and `docker-compose`. I also share how I use `docker-machine` to deploy it directly to DigitalOcean. The focus of this post is more on how I set up the codebase to work with Docker and `docker-compose`. In the future post, I'll make more detail example for both the Flask and NextJS.
+images: ['https://cdn-images-1.medium.com/max/2560/0*bqdw-IQrILS7ObvK']
+layout: PostLayout
+---
+
+Recently, I'm working on my [side-hustle](/software-development/side-hustle/passporr-dot-com-learning/) and launch [passporr.com](http://bit.ly/2ksdqZR). [Passporr.com](http://bit.ly/2ksdqZR) is a platform that allows international students to search and find anything related to their studies. It can help international students by providing them with free tools and knowledge base of the question and answer from the community. I build the platform using Flask (Python web framework), NextJS (React Framework) and wrap everything in Docker. Before build passporr, I can't find a good tutorial on how to serve flask and ReactJS application using docker. So I decided to write one now.
+
+In this post, I'll share how I set up my local development using Docker and `docker-compose`. I also share how I use `docker-machine` to deploy it directly to DigitalOcean. The focus of this post is more on how I set up the codebase to work with Docker and `docker-compose`. In the future post, I'll make more detail example for both the Flask and NextJS.
+
+# What are we going to build
+
+![Image 1](https://res.cloudinary.com/martin-labs/image/upload/v1569223656/Blog/flask-react-docker-app-login-video.gif)
+
+The application that I'll showcase here consists of:
+
+- Flask application (Backend API)
+  - Endpoint for authentication
+  - An endpoint to GET, POST, PUT user
+- NextJS application (Frontend)
+  - Anonymous user-accessible routes (Homepage, Component page, Login page)
+  - Secure routes (Profile page)
+
+# Dockerize the application
+
+If you go to the Github and clone the [repo](https://github.com/martindavid/flask-react-docker-app), you'll see the codebase consists of three main folders, `api`, `client`, `nginx`. In each the folder, you'll find a `Dockerfile` that constructs the container for each of the service. You will also see a file name `Dockerfile-prod`. `Dockerfile-prod` is a docker file that we're going to use for deploying to production. We'll come back to that file when we talk about deployment.
+
+## Flask application image
+
+```dockerfile
+# Base Image
+FROM python:3.7.2-slim
+
+# Install netcat
+RUN apt-get update && \
+    apt-get -y install netcat && \
+    apt-get clean
+
+# set working directory
+WORKDIR /usr/src/app
+
+# add and install requirements
+COPY ./requirements.txt /usr/src/app/requirements.txt
+RUN pip install -r requirements.txt
+
+# add app
+COPY . /usr/src/app
+
+# run server
+CMD python manage.py run -h 0.0.0.0
+```
+
+For the development image, I use `python:3.7.2-slim` as the base image and run the application with the built-in web-server from flask. If you look at another file in `api` folder, you'll find `Dockerfile-prod` file where I use `gunicorn` to serve the flask application.
+
+In addition to the flask application image, inside `api/project` folder, you'll find a folder name `db` which contain a sql file for creating database and a dockerfile for postgres.
+
+```dockerfile
+FROM postgres:11.1-alpine
+
+ADD create.sql /docker-entrypoint-initdb.d
+```
+
+## NextJS application image
+
+Dockerfile for NextJS application
+
+```dockerfile
+FROM node:10.16.0-alpine
+
+WORKDIR usr/src/app
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+# install and cache app dependencies
+COPY package.json /usr/src/app/package.json
+
+RUN npm install
+
+EXPOSE 3000
+CMD ["npm", "run", "dev"]
+```
+
+The image for NextJS application is pretty straightforward. I use node:10.16.0-alpine for the base image and run `dev` script to get the hot-reloading running as well.
+
+## Nginx image
+
+To connect the flask API and NextJS app, I use Nginx for that. This part shows how I set up the configuration for Nginx.
+
+```nginxconf
+server {
+  listen 8080;
+
+  location / {
+    proxy_pass        http://client:3000;
+    proxy_redirect    default;
+    proxy_set_header  Upgrade $http_upgrade;
+    proxy_set_header  Connection "upgrade";
+    proxy_set_header  Host $host;
+    proxy_set_header  X-Real-IP $remote_addr;
+    proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header  X-Forwarded-Host $server_name;
+    proxy_set_header  X-Forwarded-Proto $scheme;
+  }
+
+  location /api {
+    proxy_pass        http://api:5000;
+    proxy_redirect    default;
+    proxy_set_header  Host $host;
+    proxy_set_header  Upgrade $http_upgrade;
+    proxy_set_header  Connection "upgrade";
+    proxy_set_header  X-Real-IP $remote_addr;
+    proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header  X-Forwarded-Host $server_name;
+    proxy_set_header  X-Forwarded-Proto $scheme;
+  }
+}
+```
+
+From the above Nginx configuration, we can see that the call to `/api` is re-routed to flask application which is on port 5000. The rest of the requests is routed to NextJS application. I use port `8080` for the default port that Nginx listen to avoid conflict with other port in my machine.
+
+In addition to the above config, the following is the dockerfile for Nginx that is very straightforward.
+
+```dockerfile
+FROM nginx:1.15.8-alpine
+
+RUN rm /etc/nginx/conf.d/default.conf
+COPY /dev.conf /etc/nginx/conf.d
+```
+
+Lastly, to run everything at once, I use `docker-compose` to orchestrate all of the services.
+
+```dockerfile
+version: '3.7'
+
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - './api:/usr/src/app'
+    ports:
+      - 5002:5000
+    environment:
+      - FLASK_CONFIG=development
+      - FLASK_ENV=development
+      - APP_SETTINGS=project.config.DevelopmentConfig
+      - DATABASE_URL=postgres://postgres:postgres@tutorial-db:5432/dev_db
+      - DATABASE_TEST_URL=postgres://postgres:postgres@tutorial-db:5432/test_db
+      - SECRET_KEY=ZQbn05PDeA7v11
+    depends_on:
+      - tutorial-db
+
+  tutorial-db:
+    build:
+      context: ./api/project/db
+      dockerfile: Dockerfile
+    ports:
+      - 5436:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    depends_on:
+      - api
+      - client
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+      - './client:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - 3008:3000
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_SERVICE_URL=http://localhost:8080
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - api
+```
+
+In the `docker-compose.yml` file above, we'll have four services running (`api`, `tutorial-db`, `nginx`, `client`). You can open the main application from [http://localhost:8080](http://localhost:8080) or separately access the flask application from [http://localhost:5002](http://localhost:5002) or NextJS application from [http://localhost:3008](http://localhost:3008). You can also access the Postgres database from port `5436`.
+
+After you have everything set, you can run the whole configuration by running `docker-compose up -d --build`
+
+# Deploy the application to Digital Ocean
+
+Using `docker-machine` you can easily deploy your application directly to cloud providers such as DigitalOcean or AWS. In this post, I'll show how to deploy it to digital ocean, for more information on deploying to AWS you can see it [here](https://docs.docker.com/machine/examples/aws/). Before doing the following steps, please make sure you have
+
+1. DigitalOcean account. Use this [link](https://m.do.co/c/8756bd95a305) to create one if you don't have. If you're a student, you can also take advantage of [Github Education Pack](https://education.github.com/pack#offers) to get \$50 in platform credit on DigitalOcean
+2. A personal access token for DigitalOcean
+
+### Create a new docker engine instance
+
+The first thing to do is to create a docker-machine instance on DigitalOcean.
+
+```zsh
+docker-machine create --driver digitalocean --digitalocean-access-token <your_personal_access_token> <name-for-your-docker-machine>
+```
+
+After it successfully created, you can check it with `docker-machine ls`.
+
+```
+NAME                     ACTIVE   DRIVER         STATE     URL                              SWARM   DOCKER     ERRORS
+<docker-machine-name>    -        digitalocean   Running   tcp://<docker-machine-ip>:2376           v19.03.1
+```
+
+### Deploy the application
+
+The following commands will connect you to the instance in DigitalOcean, and you can deploy the application using `docker-compose`
+
+1. Activate the docker-machine. Replace `<docker-machine-name>` with the actual docker-machine name from the previous step.
+
+```zsh
+$ docker-machine env <docker-machine-name>
+```
+
+2. Activate shell configuration
+
+```zsh
+$ eval $(docker-machine env <docker-machine-name>)
+```
+
+3. Run docker-compose
+
+```
+$ docker-compose -f production.yml up -d --build
+```
+
+To check if the application running, you can run
+
+```zsh
+$ docker ps
+```
+
+Make sure you have three containers running there. You can also access the application from `http://<docker-machine-ip>`
+
+# Summary
+
+Using docker from development and push it to production has helped me develop the application quickly. I also have more confidence because my application has the same environment setting in both development and production. The steps that I show here for deployment from local machine maybe not ideal for team-setting or more robust application. For that case, you may need to try an option using CI/CD setting.
+
+I hope this help, and please put your feedbacks or questions if any.
