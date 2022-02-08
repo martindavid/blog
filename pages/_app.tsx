@@ -2,6 +2,7 @@ import '@/css/tailwind.css'
 import '@/css/prism.css'
 
 import '@fontsource/prompt'
+import '@fontsource/poppins'
 
 import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
