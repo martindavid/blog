@@ -18,4 +18,5 @@ Aside from technology, I also into a healthy lifestyle. I recently start powerli
 That's me. If you like my blog and project, please [subscribe](/feed.xml) to my blog and stare at my project on [Github](https://github.com/martindavid).
 
 Cheers,
+
 Martin
