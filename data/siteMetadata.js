@@ -22,12 +22,10 @@ const siteMetadata = {
     plausibleDataDomain: '', // e.g. tailwind-nextjs-starter-blog.vercel.app
     simpleAnalytics: false, // true or false
     umamiWebsiteId: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
-    googleAnalyticsId: '', // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID, // e.g. UA-000000-2 or G-XXXXXXX
   },
   newsletter: {
-    // supports mailchimp, buttondown, convertkit, klaviyo
-    // Please add your .env file and modify it according to your selection
-    provider: 'buttondown',
+    provider: 'convertkit',
   },
   comment: {
     // Select a provider and use the environment variables associated to it

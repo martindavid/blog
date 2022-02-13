@@ -5,8 +5,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app youtube.com https://martinlabs.disqus.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' youtube.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com cdn.jsdelivr.net;
+  prefetch-src 'self' disqus.com c.disquscdn.com;
   img-src * blob: data:;
   media-src 'none';
   connect-src *;
@@ -64,6 +65,40 @@ module.exports = withBundleAnalyzer({
   },
   images: {
     domains: ['res.cloudinary.com'],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/software-development/ci-cd-flask-nextjs-docker',
+        destination: '/blog/ci-cd-flask-nextjs-docker',
+        permanent: true,
+      },
+      {
+        source: '/random-notes/error-after-upgrade-openssl',
+        destination: '/blog/error-after-upgrade-openssl',
+        permanent: true,
+      },
+      {
+        source: '/software-development/setup-flask-nextjs-app-with-docker',
+        destination: 'blog/setup-flask-nextjs-application-with-docker',
+        permanent: true,
+      },
+      {
+        source: '/software-development/nextjs-contentful-app',
+        destination: '/blog/nextjs-contentful-app',
+        permanent: true,
+      },
+      {
+        source: '/life/lesson-from-first-time-pte-exam',
+        destination: '/blog/lesson-from-first-time-pte-exam',
+        permanent: true,
+      },
+      {
+        source: '/random-notes/officially-vim-user',
+        destination: '/blog/officially-vim-user',
+        permanent: true,
+      },
+    ]
   },
   async headers() {
     return [
