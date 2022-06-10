@@ -30,6 +30,13 @@ This system is an end-to-end system from harvesting the tweets, processing the d
       'https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1500471204/My%20Work/TwitterAnalytics-1/2017-07-19_1925.png',
     href: '/blog/works/twitter-analytics',
   },
+  {
+    title: 'The Tiger Archives NFT Project',
+    description: `This is my first live project in the web3/crypto space. I've been lucky along with some of my friends to collaborate with PMC and Tiger Beers to launch their first NFT project called The Tiger Archives.`,
+    imgSrc:
+      'https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1654857218/Blog/tiger-cheers/home.png',
+    href: '/blog/works/tiger-archives-nft-project',
+  },
 ]
 
 export default projectsData
