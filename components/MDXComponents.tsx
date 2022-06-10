@@ -5,6 +5,7 @@ import Image from './Image'
 import CustomLink from './Link'
 import TOCInline from './TOCInline'
 import { YoutubeEmbed } from './YoutubeEmbed'
+import { Video } from './Video'
 import { Figure } from './Figure'
 import Pre from './Pre'
 import { BlogNewsletterForm } from './NewsletterForm'
@@ -27,6 +28,8 @@ export const MDXComponents: ComponentMap = {
   YoutubeEmbed,
   // @ts-ignore
   Figure,
+  // @ts-ignore
+  Video,
 }
 
 interface Props {
