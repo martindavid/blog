@@ -37,6 +37,15 @@ This system is an end-to-end system from harvesting the tweets, processing the d
       'https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1654857218/Blog/tiger-cheers/home.png',
     href: '/blog/works/tiger-archives-nft-project',
   },
+  {
+    title: 'Reflections by Jacob Riglin NFT Project',
+    description: `
+    This is my second project with [@rlxyz_eth](https://twitter.com/rlxyz_eth). Reflections is the first of its kind generative photography project that harnesses the serendipity of on-chain mechanics to compose 1,111 unique one of a kind NFTs. All of the art comes from [Jacob Riglin's](https://www.instagram.com/jacob/?hl=en) work for the last 8 years.
+    `,
+    imgSrc:
+      'https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1654865571/Blog/reflections-dreamlab/home.png',
+    href: '/blog/works/reflections-dreamlab-nft-project',
+  },
 ]
 
 export default projectsData
