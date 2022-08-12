@@ -1,0 +1,84 @@
+---
+title: 'Epic React Course Notes: Week 1'
+date: '2022-08-12 08:00:00'
+tags: ['reactjs', 'learning-and-development']
+draft: false
+summary: As a part of my development goals at Culture Amp, I've been wanting to become more advanced in the frontend development areas. Several weeks ago, I subscribed to the [Epic React](https://epicreact.dev/) course by Kent C Dodds - thanks to Culture Amp who sponsored my learning for this. To have me accountable, in the next several weeks I'll post my learning notes from the course with the hope it will be useful for anyone who reads it without violating the copyright of the course.
+images:
+  [
+    'https://res.cloudinary.com/martin-labs/image/upload/v1660284375/Blog/epic-react-dev-blog-week-1-banner.jpg',
+  ]
+layout: PostLayout
+---
+
+As a part of my development goals at Culture Amp, I've been wanting to become more advanced in the frontend development areas. Several weeks ago, I subscribed to the [Epic React](https://epicreact.dev/) course by Kent C Dodds - thanks to Culture Amp who sponsored my learning for this. To have me accountable, in the next several weeks I'll post my learning notes from the course with the hope it will be useful for anyone who reads it without violating the copyright of the course.
+
+I briefly skim to all of the course and notice that the course content is basically an extension / has same content with some of Kent’s course in other platform like EggHead, Frontend master. So if you have seen some of his course/workshop you may find “some” similarity in this course. But what I found really useful from taking this course is an access to the discord community access where I basically learn more than the course itself.
+
+For this week, I’ll share my notes from the first section of the course - **React Fundamental** that I finish week ago. Some of you may have known all of these, but I found the the React Fundamental course refresh my understanding on the React itself and javascript concepts.
+
+## Lesson Notes
+
+The course consist of nine sections which gives a brief intro to React and how the framework can be used for a web development. These are my learning notes for the course.
+
+**React Fundamental Welcome**
+
+**Basic JS “Hello World”**
+
+The first two sections of the course is more into an intro to the course and what’s the expectation for the student. He mentioned several articles around background knowledge required to understand the course. Some important javascript concept that may help to follow the course :
+
+- Javascript template literals
+- Shorthand property name
+- Arrow functions
+- Object / Array Destructuring
+- Parameter default
+- Rest/spread operators
+- ES Modules
+- Ternaries operator
+- Array methods
+- Nullish coalescing operator
+- Optional chaining
+- Promise, Async/Await
+
+**Intro to Raw React API**
+
+This section of the course is just an intro to write React directly within HTML file using the React script from CDN.
+
+**Intro to JSX**
+
+- This section gives a brief intro of Babel and how Babel transform the JSX into a javascript code that’s runnable on the browser
+- Some basic concepts that he explained in this section
+  - String interpolation - Interpolate element props He explained how does JSX interpret the usage of curly braces to pass the variable
+  - Passing props to component using spread operator
+
+**Creating custom component**
+
+- In this section of the course briefly I learn how the JSX work within custom component context. The exercise for this section still in HTML file.
+- Brief intro to the propTypes (the API from React that’s used to add props type to the component). After he gave an example on how to write the type manually, he also give an example the use of PropTypes package.
+- Things that I learn here
+  - prop-types only applicable in the development mode
+  - In PROD, Babel basically won’t transpile the propTypes from the component
+
+**Styling**
+
+Just a basic intro on how you can do styling within a react component. As you all probably have known, you can either use an inline-style or use the className props.
+
+**Form**
+
+- This section discuss a basic concept on how to use form in React. The course revisit some of the form event concept and briefly explain React synthetic event.
+- This section also revisit the use of ref with a form component.
+- TIL: in this course the use of console.dir to print navigable tree. (Although in chrome the print out looks similar)
+- I also learn a various way to get an input from HTML FORM element
+  - when you register name/id to a form element you can get the value by using event.target.elements.[id/name of the element]
+  - Learn about controlled input in form
+
+**Rendering Arrays**
+
+- This section gives a brief intro on how to render an array in the React component
+  - Reminder about the importance of key props when rendering an array
+- For more detail explanation he refer to one of his [article](https://kentcdodds.com/blog/understanding-reacts-key-prop)
+- Notes to myself: Don’t use the array index. If the array doesn’t have unique id, it’s better to reconstruct the array and put an ID for each element that’s consistent (not change on every render)
+
+## Conclusion
+
+Overall, the React Fundamental section is a beginner intro to react. If you have used React for a a couple of years this section of the course maybe a bit dry. But for me, the content in here makes me revisit some of the concepts that I previously only blindly use.
