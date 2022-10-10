@@ -1,0 +1,134 @@
+---
+title: 'Epic React Course Notes: React Hooks'
+date: '2022-09-10 08:00:00'
+tags: ['reactjs', 'learning-and-development']
+draft: false
+summary: "As I've embarked into the [EpicReact](https://epicreact.dev/) course by Kent's C Doods in the last couple of weeks, this week, I've finished with the second section of the course. This section teach me about React Hooks. It consists of basic explanation of the react hooks and exercises to make people familiar with hooks and how it can simplify some of the advanced pattern in React."
+images:
+  [
+    'https://res.cloudinary.com/martin-labs/image/upload/v1660284375/Blog/epic-react-dev-blog-week-1-banner.jpg',
+  ]
+layout: PostLayout
+---
+
+As I've embarked into the [EpicReact](https://epicreact.dev/) course by Kent's C Doods in the last couple of weeks, this week, I've finished with the second section of the course. This section teach me about React Hooks. It consists of basic explanation of the react hooks and exercises to make people familiar with hooks and how it can simplify some of the advanced pattern in React.
+
+## Lesson Notes
+
+## `useState`: Greeting
+
+- First section of the course which explain a basic use of `useState` hook and how it can be used to manage internal state of the component
+- When you call `useState` it will return an array which consists of the state in the first index and the state updexerater (dispatcher) in the second index
+  - Whenever the state dispatcher is called, React will run re-render the whole component
+
+## `useEffect`: Persistent State
+
+- In this section, Kent gave a brief intro into useEffect hook and how it can be used to make a side-effect for the component.
+  - The way he phrase it, “it’s a way for the component to sync its internal state with the state of the world”
+- In this section, he revisit back the useState hook and explain the use of lazy state initialization.
+  - When React.useState accept an argument that comes computationally expensive function, it will run for every re-render. To avoid this, we can just pass the function directly as an argument instead of calling it there.
+
+```tsx
+# Instead of this
+
+const stateFromExpensiveFunction = expensiveAndComplexFunction()
+const [state, setState] = React.useState(stateFromExpensiveFunction)
+
+# Better to do this
+
+const [state, setState] = React.useState(expensiveAndComplexFunction)
+```
+
+In the course, he uses an example of interacting with browser localStorage.
+
+```tsx
+# Instead of this
+
+const [state, setState] = React.useState(JSON.parse(localStorage.get('localState')))
+
+# Better to do this
+
+const [state, setState] = React.useState(() => JSON.parse(localStorage.get('localState')))
+```
+
+In this section, he also explain the use of state dispatcher that accept a function, which the first argument of the function will be the previous state of the component
+
+```tsx
+const [state, setState] = React.useState(stateObject)
+
+setState((prevState) => ({
+  ...prevState,
+  [props]: newValue,
+}))
+```
+
+Back to `useEffect`. He explains that the dependencies array in `useEffect` second argument use shallow comparison internally, means when we use object as a dependency, we may end up run the `useEffect` block for every re-render even though the value within the object doesn’t change.
+
+## Hook Flow
+
+- In this section of the course, we learn about the lifecycle of React component when it uses the React Hooks
+  - See [this image](<[https://github.com/donavon/hook-flow/blob/master/hook-flow.pdf](https://github.com/donavon/hook-flow/blob/master/hook-flow.pdf)>) for reference
+- You can use this [code](<[https://github.com/kentcdodds/react-hooks/blob/main/src/examples/hook-flow.js](https://github.com/kentcdodds/react-hooks/blob/main/src/examples/hook-flow.js)>) to play around with how the lifecycle looks like with React Hook.
+- TIL: you can pass second argument (color) to console.log to print out the value in color.
+- For me, it just blow my mind how previously we need to deal with several lifecycle methods in React class component and react hook and function component simplified all of those methods.
+
+## Lifting State
+
+- When the component needs to be controlled from the outside (controlled component), it’s best to lift the state to the upper component.
+  - Lifting the state up also useful for case when the sibling component needs the state from its sibling.
+  - I read more details about this concept from [https://beta.reactjs.org/learn/sharing-state-between-components](https://beta.reactjs.org/learn/sharing-state-between-components) and [https://kentcdodds.com/blog/state-colocation-will-make-your-react-app-faster](https://kentcdodds.com/blog/state-colocation-will-make-your-react-app-faster)
+- TLDR; try to keep the state as close as possible to the component that need it
+
+## `useState` Deep Dive: Build a tic tac toe game
+
+- Introduce the concept of
+  - **Managed state** -> state that you need to explicitly manage
+  - **Derived state** -> state that you can calculate based on other state within the component
+- Avoid to mutate the state directly, always create a copy of the state first then apply the update the change to the copy instead.
+- If the derived state comes from a computationally expensive operation, we may want to use useMemo with it. But this only for as a last resort when performance become an issue.
+  - Most of the case derived state may be a better option than managed state (hint: prevent re-render when the state dispatcher is called)
+  - Component re-render doesn’t necessarily bad. It will become an issue if the re-render involve a DOM update.
+    - More detail discussion in this article [https://kentcdodds.com/blog/fix-the-slow-render-before-you-fix-the-re-render](https://kentcdodds.com/blog/fix-the-slow-render-before-you-fix-the-re-render)
+- In this section Kent gave an example the use of `useState` that interacts with `localStorage`. The exercise start with calling the `localStorage` directly within the component and do another exercise to refactor the code and extract the `localStorage` into its own custom react hook
+- In addition, there’s another exercise to refactor a React class component to become a function component with React hooks to replace the class component lifecycle methods.
+
+## `useRef` and `useEffect`: DOM Interaction
+
+- When we create react element in the component or explicitly use `React.createElement` function, React won’t gives us access to the actual DOM that’s rendered to the browser. It’s not until React call the `ReacDom.render` function, the DOM nodes is created.
+- To get access to an actual DOM we need to an access to it by a special prop called `ref` .
+- In this section, I do an exercise that gives an example how to use a 3rd-party library (Vanilla-tilt.js) that requires access to an actual DOM nodes of the rendered component
+- If we play with DOM nodes within component useEffect we need to make sure that we provide the clean up function, to clean up the reference to the DOM
+  - This is to prevent a browser memory leak that comes from DOM reference that cannot be garbage collected
+
+## `useEffect`: HTTP request
+
+- In this section of the course, I do an exercise to learn how to use `useEffect` hook to make an API call.
+  - An example use a graphql endpoint from pokemon database
+- In this section, I learn that you can pass the second argument to promise .then function which is used for a error handler that only occur with the promise
+
+```tsx
+# The second argument will only catch an error that occur with the fetching/promise code)
+
+functionThatReturnPromise(<arguments>).then((data) => {
+  ... operation logic with data variable
+},
+error => handle error with promise)
+
+# if we use catch, it will also handle any error that occur after the promise is resolved
+
+functionThatReturnPromise(<arguments>).then((data) => {
+  throw Error('error after operating with data')
+},
+error => handle error with promise).catch((err) => {
+  console.log(err) // print out 'error after operating with data')
+})
+```
+
+- Learn about the use case of using object as a state instead of using multiple variable from useState.
+  - Prior to React 18, a call to state dispatcher that occur inside of a Promises, setTimeout, or native event handlers were not batched, hence sometime we’ll face with multiple re-renders or race condition.
+  - To prevent this, we may want to refactor the use of multiple state into just one state that’s in an object form.
+- In this section, I also learn to use react ErrorBoundary. Start with writing my own ErrorBoundary class component and end up using the react-error-boundary library.
+
+## Conclusion
+
+Overall, the course has taught me more detail concepts on react hooks. I've used react hooks in the past, but I never really learn the underlying concept of it. This course teach me on how to utilise it better and a couple of tricks in certain use cases.
