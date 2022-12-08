@@ -28,14 +28,15 @@ export const getStaticProps: GetStaticProps<{
     params: { page },
   } = context
   const posts = await getAllFilesFrontMatter('blog')
+  const filteredPosts = posts.filter((post) => !post.tags.includes('work'))
   const pageNumber = parseInt(page as string)
-  const initialDisplayPosts = posts.slice(
+  const initialDisplayPosts = filteredPosts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
   )
   const pagination = {
     currentPage: pageNumber,
-    totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
+    totalPages: Math.ceil(filteredPosts.length / POSTS_PER_PAGE),
   }
 
   return {

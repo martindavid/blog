@@ -12,7 +12,7 @@ const siteMetadata = {
   socialBanner: '/static/images/twitter-card.png',
   email: 'mvalentino@martinlabs.me',
   github: 'https://github.com/martindavid',
-  twitter: 'https://twitter.com/wackyshut',
+  twitter: 'https://twitter.com/martinlabs_eth',
   facebook: 'https://facebook.com/martindavidvalentino',
   youtube: '',
   linkedin: 'https://www.linkedin.com/in/martinsiagian/',

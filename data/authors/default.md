@@ -4,7 +4,7 @@ avatar: /static/images/avatar.png
 occupation: Builder
 company: CultureAmp
 email: mvalentino@martinlabs.me
-twitter: https://twitter.com/wackyshut
+twitter: https://twitter.com/martinlabs_eth
 linkedin: https://www.linkedin.com/in/martinsiagian/
 github: https://github.com/martindavid
 ---

@@ -13,7 +13,9 @@ const MAX_DISPLAY = 5
 export const getStaticProps: GetStaticProps<{ posts: PostFrontMatter[] }> = async () => {
   const posts = await getAllFilesFrontMatter('blog')
 
-  return { props: { posts } }
+  const filteredPosts = posts.filter((post) => !post.tags.includes('work'))
+
+  return { props: { posts: filteredPosts } }
 }
 
 export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {

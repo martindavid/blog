@@ -13,10 +13,11 @@ export const getStaticProps: GetStaticProps<{
   pagination: ComponentProps<typeof ListLayout>['pagination']
 }> = async () => {
   const posts = await getAllFilesFrontMatter('blog')
-  const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE)
+  const filteredPosts = posts.filter((post) => !post.tags.includes('work'))
+  const initialDisplayPosts = filteredPosts.slice(0, POSTS_PER_PAGE)
   const pagination = {
     currentPage: 1,
-    totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
+    totalPages: Math.ceil(filteredPosts.length / POSTS_PER_PAGE),
   }
 
   return { props: { initialDisplayPosts, posts, pagination } }
