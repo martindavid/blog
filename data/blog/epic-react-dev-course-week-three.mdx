@@ -1,0 +1,171 @@
+---
+title: 'Epic React Course Notes: Advanced React Hooks'
+date: '2022-10-10 08:00:00'
+tags: ['reactjs', 'learning-and-development']
+draft: false
+summary: ''
+images:
+  [
+    'https://res.cloudinary.com/martin-labs/image/upload/v1660284375/Blog/epic-react-dev-blog-week-1-banner.jpg',
+  ]
+layout: PostLayout
+---
+
+Github Repo: [https://github.com/kentcdodds/advanced-react-hooks](https://github.com/kentcdodds/advanced-react-hooks)
+
+## Lesson Notes
+
+## `useReducer`: Simple Counter
+
+The course start with a brief comparison on `useState` and `useReducer` and how you can use one to replace another. Kent’s [blogpost](<[https://kentcdodds.com/blog/should-i-usestate-or-usereducer](https://kentcdodds.com/blog/should-i-usestate-or-usereducer)>) explain the trade-offs between two and use case for each.
+
+- TLDR; from the blogpost
+  - **When it's just an independent element of state you're managing: `useState`**
+  - **When one element of your state relies on the value of another element of your state in order to update: `useReducer`**
+  - starting with **`useState`** , and moving to **`useReducer`**when you notice elements of state need to change together.
+- My take: if you’re familiar with redux, the pattern in `useReducer` kind of similar, where you write reducer function that consists of state and action.
+- `useReducer` will return an array where first index is the state and second index is the dispatcher function
+- Reducer function → `func(state, action)`
+  - The structure that you most likely see, which `newState` may includes an `action` is a convention for the reducer function and not an actual API from `useReducer`
+  - The second argument for the reducer function is the value that the dispatcher function arguments receive
+- We can also simulate the dispatcher function to accept a function with the argument is the previous state, similar to the dispatcher function in `useState`.
+
+  - By constructing the reducer function like this
+
+  ```tsx
+  const countReducer = (state, action) => {
+    return {
+      ...state,
+      ...(typeof action === 'function' ? action(state) : action),
+    }
+  }
+  ```
+
+  The `useReducer` dispatch function now can be called with
+
+  - `dispatch(newValue)` or
+  - `dispatch((prevState) => { ...prevState, newValue })`
+
+## `useCallback`: custom hooks
+
+- It’s a hook that’s used for memoization. In react you can use `useCallback` or `useMemo` for memoization. Kent’s has a good article discuss about this in detail
+  - [https://epicreact.dev/memoization-and-react/](https://epicreact.dev/memoization-and-react/)
+  - [https://kentcdodds.com/blog/usememo-and-usecallback](https://kentcdodds.com/blog/usememo-and-usecallback)
+- In this section, I learn to refactor a logic within a component to be a custom hook. In the exercise, it’s to refactor the API call function that previously run within a component to a custom hook.
+  - In this exercise, Kent put a reminder on how important to list out the dependencies array for the `useCallback` hook or otherwise potentially we’ll get the indefinite re-render or unexpected re-render.
+- The exercise in this section teach me how various kind of use case where the `useCallback` can be suitable to use, especially at the custom hook level.
+
+  - The exercise also teach a simple trick to make sure `dispatch` function in `useReducer` can be called safely, for a case there’s a long operation happening at the dispatch and the component has an unexpected unmount. This require us to use `useRef` to determine the mount/unmount state. Code below for reference
+
+  ```tsx
+  function useSafeDispatch(dispatch) {
+    const mountedRef = React.useRef(false)
+
+    React.useEffect(() => {
+      mountedRef.current = true
+      return () => {
+        mountedRef.current = false
+      }
+    }, [])
+
+    return React.useCallback(
+      (...args) => (mountedRef.current ? dispatch(...args) : void 0),
+      [dispatch]
+    )
+  }
+  ```
+
+I’d say I spent some time in this section to fully understand the pattern here, and still try to think how can I apply this in my work.
+
+## `useContext`: simple Counter
+
+This section of the course gives a brief intro to the React context and how we can
+
+This section also revisit some of the concepts like:
+
+- Lifting state up - [https://reactjs.org/docs/lifting-state-up.html](https://reactjs.org/docs/lifting-state-up.html)
+- Props drilling - [https://kentcdodds.com/blog/prop-drilling](https://kentcdodds.com/blog/prop-drilling)
+- He mention that lot of people said that context is used to avoid having a props drilling “issue”, it’s not the only solution. Composition probably a way better solution for solving props drilling than rely on react context. This is a reference video to learn more about it [https://www.youtube.com/watch?v=3XaXKiXtNjw](https://www.youtube.com/watch?v=3XaXKiXtNjw)
+
+<YoutubeEmbed id="3XaXKiXtNjw" />
+
+- He will touch more on this composition pattern later in the Advanced React Pattern course
+
+This section also teach about how to wrap a context into a custom hook that can be easily shared to a consumer.
+
+This section also teach me one trick that I end up use in the Goal Tree. Have a context initialise with just undefined (because the initial value is undetermined initially)
+
+```tsx
+import React from 'react'
+
+interface GoalTreeState {
+  expandedNodes: string[]
+  updateExpandedNodes: (newExpandedNodes: string[]) => void
+}
+
+const GoalTreeStateContext = React.createContext<GoalTreeState | undefined>(undefined)
+
+interface GoalTreeStateProps {
+  children: React.ReactNode
+}
+
+export function GoalTreeStateProvider({ children }: GoalTreeStateProps) {
+  const [expandedNodes, setExpandedNodes] = React.useState<string[]>([])
+
+  const updateExpandedNodes = (newExpandedNodes: string[]) => {
+    setExpandedNodes(newExpandedNodes)
+  }
+
+  return (
+    <GoalTreeStateContext.Provider value={{ expandedNodes, updateExpandedNodes }}>
+      {children}
+    </GoalTreeStateContext.Provider>
+  )
+}
+
+export function useGoalTreeState() {
+  const context = React.useContext(GoalTreeStateContext)
+
+  if (context === undefined) {
+    throw new Error('useGoalTreeState must be used within GoalTreeStateProvider')
+  }
+
+  return context
+}
+```
+
+Another examples in this section is to use React context to cache the response from API call.
+
+## `useLayoutEffect`: auto-growing textarea
+
+- Read Kent’s article on the comparison for `useEffect` vs `useLayoutEffect` [https://kentcdodds.com/blog/useeffect-vs-uselayouteffect](https://kentcdodds.com/blog/useeffect-vs-uselayouteffect)
+  - TLDR;
+    - Use **`useLayoutEffect`** when there’s a need to mutate the DOM or do measurement to the actual DOM that’s rendered to the browser
+    - Use **`useEffect` for any other side-effect that’s not required mutating the DOM or getting measurement from the DOM element.**
+- Simple rule from the course
+  If you are making observable changes to the DOM, then it should happen in `useLayoutEffect`, otherwise `useEffect`.
+- This section doesn’t give much explanation as it should be obvious enough on the use case for this particular hook.
+
+## `useImperativeHandle`: scroll to top/bottom
+
+This is react hook that allows us to expose imperative methods to a component consumer which pass a ref prop to our component and it needs to be handled imperatively.
+
+- The exercise from this section teach about how to attach a function to a `ref` object and call it from the component consumer.
+
+I will never know about this hook if it’s not from this course. Kent also said, there’s a little use case for this hook for a problem that you probably can solve with React native “declarative” way.
+
+## `useDebugValue`
+
+It’s a react hook that is useful in conjunction with React Devtools. It can only be used inside a custom hook.
+
+This hook basically allow you to give a label to a custom hook so that it gives more context for debugging in the React dev tools
+
+- Without `useDebugValue`
+
+![without useDebugValue](https://res.cloudinary.com/martin-labs/image/upload/v1670494651/Blog/without-usedebugvalue.png)
+
+- With `useDebugValue`
+
+![with useDebugValue](https://res.cloudinary.com/martin-labs/image/upload/v1670494652/Blog/with-usedebugvalue.png)
+
+Basically it’s like put a `console.log`, but you can see the print out directly from the React Dev Tools
