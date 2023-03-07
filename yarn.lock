@@ -5893,10 +5893,10 @@ rehype-autolink-headings@6.1.1:
     unified "^10.0.0"
     unist-util-visit "^4.0.0"
 
-rehype-citation@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/rehype-citation/-/rehype-citation-1.0.0.tgz#7413371cd4b8dbf13c4e26753363e2523fe3c13e"
-  integrity sha512-D0BoMl/QorELjd10DQGtfEFvJZ3IKqf95QUl+++ZaubQwKxt9SXaIGBeZfVfhEg0qoqVY/g+SfLgjs0rB7Zblg==
+rehype-citation@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-citation/-/rehype-citation-1.0.1.tgz#7da9f902df40fff9c621c30b6fe851f1987505fa"
+  integrity sha512-l50kEikJQBNQNgfsIBNlxkyzsA7Ia6fZ03hKpNP8h67dH54ILMBNyrU0L3J77B2WcjXQDYpMrFYTcznI1YFtiQ==
   dependencies:
     "@citation-js/core" "^0.6.5"
     "@citation-js/date" "^0.5.1"
