@@ -1,0 +1,26 @@
+# Ignore everything by default:
+*
+
+# Whitelist by file extension...
+!**/
+!*.ts
+!*.tsx
+!*.js
+!*.json
+!*.css
+!*.scss
+!*.html
+
+# Override and explicitly ignore...
+**/node_modules/
+**/build/
+/coverage/
+/stack/
+/locales/
+/storybook-static/
+/.next/
+/.lambda/
+/out/
+**/Avo.ts
+**/*.snap.js
+public/
