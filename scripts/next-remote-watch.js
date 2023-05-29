@@ -5,7 +5,6 @@
 // The app listens to the event and triggers a client-side router refresh
 // see components/ClientReload.js
 
-const chalk = require('chalk')
 const chokidar = require('chokidar')
 const program = require('commander')
 const http = require('http')
@@ -99,7 +98,7 @@ app.prepare().then(() => {
     // log message if present
     const msg = req.body.message
     const color = req.body.color
-    msg && console.log(color ? chalk[color](msg) : msg)
+    msg && console.log(msg)
 
     // reload the nextjs app
     app.server.hotReloader.send('building')
