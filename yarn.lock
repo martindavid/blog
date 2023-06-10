@@ -1451,10 +1451,10 @@
   resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-5.0.2.tgz#0f06a1adb3f8584114818e7c21a7d480450dae7c"
   integrity sha512-504RESq2qbyVxxpjP2TyVQODOWakuBHBD3AtYurtmNHosC4x+mjyOlRSdW2QjsILezlwFCnLkYuGUzYiV44sEg==
 
-"@fontsource/prompt@5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/prompt/-/prompt-5.0.2.tgz#5f1c43af4ce30d7543e9dd0dc25956eea94b47df"
-  integrity sha512-Ca3VmBYl40iC1MO63d4jEKrtslOm6WyG/TtweH39GL5EnCX+vLSRRBskAjP9nXF4hWFQ0DkHCbFk49JWUEiRIQ==
+"@fontsource/prompt@5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@fontsource/prompt/-/prompt-5.0.3.tgz#49a65cd0a399bdc70ab00daaa0babc7288d02fe9"
+  integrity sha512-/qDr9w5nmLUSWubdUPzGhsjB9PoNgqbALrXKoLYR68RCFywtVmJ35Avqvj9/nW3zsf1VfE/4dzZEP+fkiV95Sg==
 
 "@humanwhocodes/config-array@^0.11.10":
   version "0.11.10"
