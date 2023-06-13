@@ -10,22 +10,22 @@ layout: PostLayout
 ---
 
 Last week, I attended the [Web Directions Code conference](https://webdirections.org/code/index.php). It's a two days
-conference that covers various different topics around web development. The theme for this year conference was (as I quote from their website) 
+conference that covers various topics around web development. The theme for this year's conference was (as I quote from their website) 
 "front of the front end" and the "back of the front end" –the technologies (JavaScript, the React ecosystem, CSS, browser APIs), 
 and practices (privacy, security, performance, platform engineering and operations, and more) that underpin today's web sites and app. In this post,
-I'd like to share some notes from the talks that I attended and the learning I have from that.
+I'd like to share some notes from the talks that I attended and the learning I have from them.
 
 # Day 1
 
-## Keynote - Beyond the web of today
+## Keynote - Beyond the Web of today
 
 **Speaker**: Kenneth Rohde Christiansen -  Intel Corporation - Principal Engineer and Web Platform Architect
 
 ### Summary
 
-At Intel we work on the forefront of innovation as our hardware roadmaps are defined years ahead of release. This means that we need to make sure that the web platform takes advantage of new hardware capabilities as they are released or shortly after. This ranges from enabling new form factors to taking advantage of hardware accelerators.
+At Intel, we work at the forefront of innovation as our hardware roadmaps are defined years ahead of release. This means that we need to make sure that the web platform takes advantage of new hardware capabilities as they are released or shortly after. This ranges from enabling new form factors to taking advantage of hardware accelerators.
 
-In this talk we will discuss some of the new innovations that Intel is bringing to the web, such as WebNN, which enables access to fast neural network and machine learning capabilities; Web GPU and Compute Pressure, a new API enabling better user experience and bringing adaptive compute capabilities to the client, just like adaptive streaming has improved streaming use-cases by adapting to live network conditions.
+In this talk we will discuss some of the innovations that Intel is bringing to the web, such as WebNN, which enables access to fast neural network and machine learning capabilities; Web GPU and Compute Pressure, a new API enabling better user experience and bringing adaptive compute capabilities to the client, just like adaptive streaming has improved streaming use-cases by adapting to live network conditions.
 
 <Collapsible title="Notes">
     - Intel bet on Cross-platform apps. development
@@ -35,27 +35,27 @@ In this talk we will discuss some of the new innovations that Intel is bringing 
             - WebAssembly
             - MediaPipe
             - Native support for machine learning (WebNN?)
-        - Intel build the tech for web that’s supported by the hardware that they currently build and optimising.
+        - Intel build the tech for the web that’s supported by the hardware that they currently build and optimise.
 
     - Developer bet on the web technology
-        - Web technology requires interopability - browsers
-        - Mention about Progressive Web Apps that dominate the application open on the browser on PC
+        - Web technology requires interoperability - browsers
+        - Mention Progressive Web Apps that dominate the application open on the browser on the PC
         - [Project Fugu](https://developer.chrome.com/capabilities/)
           Project Fugu is an effort to close gaps in the web's capabilities enabling new classes of applications to run on the web.
             - Example: [vscode.dev](http://vscode.dev) can access local filesystem with the FileSystem Access API
         - [Origin Private File Systems](https://web.dev/origin-private-file-system/)
           The origin private file system allows web apps to store and manipulate files in their very own origin-specific virtual filesystem, including low-level file manipulation, byte-by-byte access, and file streaming. The origin private file system is supported across all major browsers.
 
-    - Safety and Privacy on the web native app
-        - How does web native app take care of the user privacy and safety for the user?
+    - Safety and Privacy on the Web-native app
+        - How does the web native app take care of user privacy and safety for the user?
             - App signing, action approval
 
-    - Web API that support performance
+    - Web API that supports performance
         - [WebAssembly](https://webassembly.org/)
         - [WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
         - [WebGPU](https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API)
         - Web Neural Network?
-        - WebCodec → Accelerating media processing - The work between Intel and Google and has been used by Zoom to accelerate the video conference call
+        - WebCodec → Accelerating media processing - The work between Intel and Google has been used by Zoom to accelerate the video conference call
 
     WebGPU
     The WebGPU API enables web developers to use the underlying system's GPU (Graphics Processing Unit) to carry out high-performance computations and draw complex images that can be rendered in the browser.
@@ -65,16 +65,16 @@ In this talk we will discuss some of the new innovations that Intel is bringing 
             - babylon.js
             - Unreal engine
             - Unity
-    - WebGPU allow us to run compute process on the web.
-    - Intel is owner of WebGPU backend for tensorflow.js
+    - WebGPU allow us to run compute-process on the web.
+    - Intel is the owner of the WebGPU backend for tensorflow.js
         - Work collaboratively with Google to improve the performance at this end
 
     - AI at Scale Web Neural Network API
         - a [web api](https://webmachinelearning.github.io/webnn-intro/) that’s build within the [W3C spec](https://www.w3.org/TR/webnn/)
-        - In this talk, the speaker also showcase of the performance example on how use WebNN can improve the performance of background replacement flow compare to purely on WASM
-        - a low level ML API that’s built specifically to support the use case of ML/AI in the web platform
-        - Features that dev need in terms of:
-            - Background blury
+        - In this talk, the speaker also showcased the performance example on how the use of WebNN can improve the performance of background replacement flow compared to purely on WASM
+        - a low-level ML API that’s built specifically to support the use case of ML/AI in the web platform
+        - Features that the dev. need in terms of:
+            - Background blurry
                 - It’s already implemented as part of WebRTC API
             - Face Detection
                 - OpenCV, Mediapipe, ShapeDetection, WebRTC (nowadays)
@@ -95,22 +95,22 @@ Mecca's Engineering will be presenting its approach to solving the scalability a
     - Challenges at Mecca for micro-frontend
         - Integration approach
             - Build time or run time integration between diff. micro frontend
-            - Server side vs client-side integration
+            - Server-side vs client-side integration
             - Using iFrame
             - Web component
             - Module Federation
-        - Cross application communication
+        - Cross-application communication
             - Custom events
-                - Use lot of event listeners for diff
+                - Use a lot of event listeners for diff
             - Props and callbacks?
             - Web Workers
             - Pub/Sub library
     - MicroFrontend Composition at Mecca
-        - Different packages for different part of the page (micro-frontend published as a NPM Package)
+        - Different packages for different parts of the page (micro-frontend published as an NPM Package)
             - Similar to some of our implementation of micro-frontend at CultureAmp?
         - Consistency is being made with the template generator that is built for every new micro-frontend
-        - Higher scalability and resilience is built by putting LoadBalancer at the front of Mecca reverse proxy
-        - Development and deployement consistency challenge
+        - Higher scalability and resilience are built by putting LoadBalancer at the front of Mecca reverse proxy
+        - Development and deployment consistency challenge
             - Question to ask?
                 - How to share a code between microFE
                 - How to symlink multiple packages during dev time
@@ -119,11 +119,11 @@ Mecca's Engineering will be presenting its approach to solving the scalability a
         - Mecca decided to put all of the apps in monorepo
             - single repo (16apps, 86 packages)
 
-    Learning from Mecca microfrontend journey
+    Learning from Mecca micro-frontend journey
 
     Pros
 
-    - It probably better to have a smaller repos
+    - It is probably better to have a smaller repos
     - enhanced fault resistance
     - Streamlined scalability
     - Effortless work distribution
@@ -131,10 +131,10 @@ Mecca's Engineering will be presenting its approach to solving the scalability a
 
     Cons
 
-    - Not ideal for a smaller projects
+    - Not ideal for smaller projects
     - Less consistency
     - Elevated complexity in CI/CD
-    - Cost effective initiation
+    - Cost-effective initiation
 </Collapsible>
 
 ## 2. Perceived Performance
@@ -142,9 +142,9 @@ Mecca's Engineering will be presenting its approach to solving the scalability a
 **Speaker**: Luke Denton - Principal Frontend Software Engineer - Aligent
 
 ### Summary
-What is perceived performance? It can’t really be measured, it’s a perception, it’s a feeling of performance. In the context of a website, perception is reality.
+What is perceived performance? It can’t be measured, it’s a perception, it’s a feeling of performance. In the context of a website, perception is reality.
 
-If a website feels fast to a user, then it is fast. In this talk, we’re going to explore some patterns and techniques that we use in our day-to-day, working on large scale ecommerce websites, ensuring our client’s customers have the best experience possible, which leads to happier customers and higher conversions.
+If a website feels fast to a user, then it is fast. In this talk, we’re going to explore some patterns and techniques that we use in our day-to-day, working on large-scale e-commerce websites, ensuring our client’s customers have the best experience possible, which leads to happier customers and higher conversions.
 
 <Collapsible title="Notes">
     What is performance
@@ -153,13 +153,13 @@ If a website feels fast to a user, then it is fast. In this talk, we’re going 
     - Is it time on site?
     - Is it website conversion?
 
-    What is perceived performance
+    What is perceived performance?
 
     - Subjective feeling that the website is instant to load
 
     Perceived performance patterns
 
-    1. Cummulative Layout Shift (CLS)
+    1. Cumulative Layout Shift (CLS)
         - Layout Jank
         - Overcome it with skeleton loaders
             - Or push the element that’s distracted to the bottom
@@ -167,15 +167,15 @@ If a website feels fast to a user, then it is fast. In this talk, we’re going 
     2. Loading Indicators
         - Show exactly when a user is being made to wait
     3. Local Data Cache
-        - Remember what use has already seen and not refetching the data that user has already saw
+        - Remember what the user has already seen and not re-fetching the data that the user has already seen
         - swr pattern - Use react-query
-        - The speaker show a demo to build a vanilla JS SWR Implementation
+        - The speaker shows a demo to build a vanilla JS SWR Implementation
         - how to persist the data
             - localStorage and sessionStorage
             - IndexedDB
             - CacheAPI
     4. Prefetching
-        - Prefetch focus on data/text element like data requests or JS/CSS
+        - Prefetch focus on data/text elements like data requests or JS/CSS
         - When to pre-fetch
             - Immediately
             - When the network is idle
@@ -204,7 +204,7 @@ In this talk, we'll cover how we can modernise our code to the new dependencies 
     - Question:
         - How do we migrate commonly used code to something new?
 
-    Below are some of the strategies and factors to consider when working to improving the legacy codebase
+    Below are some of the strategies and factors to consider when working to improve the legacy codebase
 
     #### Manual migration
 
@@ -244,7 +244,7 @@ In this talk, we'll cover how we can modernise our code to the new dependencies 
         - Confidence in visual changes
         - Confident in functional changes
 
-    Risk impact to customers
+    Risk impact on customers
     - Time to recovery
     - Blast radius
     - Measurement - are we introducing performance regression
@@ -261,14 +261,14 @@ In this talk, we'll cover how we can modernise our code to the new dependencies 
     An approach that the speaker has taken for large changes to the legacy codebases:
 
     - Make changes in multiple batches
-        - Each changes should be trivial
+        - Each change should be trivial
     - The first pass should be the largest but the least complex
     - The last pass should be the most complex but should be quite small
     - Scope out to the next batch if we encounter complexity in the middle
 
     - Avoid Scope Creep
         - Try not to change things unrelated to your goal
-        - Drop it and come back later if something taking up lot of our times
+        - Drop it and come back later if something taking up a lot of our times
 
     - Tools that make large changes easier
         - Custom git merge driver (e.g. run a codemod on merge conflicts)
@@ -285,16 +285,16 @@ Incident management can be challenging and throw you curveballs with unexpected 
 
 Remember when we were at school, and people said - "Actively listening in class guarantees 50% prep for the upcoming test"? The same goes for being proactive at work in ways that will instantly prepare you to manage incidents better (at night or in general).
 
-In this talk, I'll cover the proactive ways you could take and incorporate into your day-to-day routine, in order to prepare you for a smoother and more efficient incident management process.
+In this talk, I'll cover the proactive ways you could take and incorporate into your day-to-day routine, to prepare you for a smoother and more efficient incident management process.
 
-I will also show the best practices I've finalized over the years that helped me get a clear vision of how to manage production incidents in the quickest & efficient way possible.Embracing the tips I'll give you will guarantee you'll not only talk the talk but also walk the walk when it comes to incident management.
+I will also show the best practices I've finalized over the years that helped me get a clear vision of how to manage production incidents in the quickest & efficient way possible. Embracing the tips I'll give you will guarantee you'll not only talk the talk but also walk the walk when it comes to incident management.
 
 <Collapsible title="Notes">
 - Not all pages become an incident
 
 The mindset - Don’t think only about your systems, also understand the WHY????
 
-- Business mindset is required to grasp the overall impact of the incident to the busines
+- Business mindset is required to grasp the overall impact of the incident on the business
 - Important mindset to put - Everything fail all of the time - quotes by Werner Vogels
 
 Incident management structure reference by OnPage
@@ -310,19 +310,19 @@ Question to ask
 1. Notify and escalate
     - Who should be notified about the incident
     - Does this incident needs escalation?
-        - Do I need other stakeholder involve in the incident or not
+        - Do I need other stakeholders to involve in the incident or not
 
 1. Investigate and diagnose
     - What info is relevant towards incident resolution
-    - Has the root cause identified? Do we understand the cause of the root cause?
+    - Has the root cause been identified? Do we understand the cause of the root cause?
         - Prioritise the root cause over symptoms of the issue
 
 1. Resolve and recovery
-    - Do the fastest solution to eliminating downtime without compromising system’s health and stability
-    - Is there any action-items needed after resolving the issue
+    - Do the fastest solution to eliminating downtime without compromising the system’s health and stability
+    - Is there any action items needed after resolving the issue
         - Preventing a recurring issue is the priority
 2. Closure
-    - Be an end-to-end communicator. Communicate with the stakeholder that’s involved or need to know that the incident has been resolved.
+    - Be an end-to-end communicator. Communicate with the stakeholder that’s involved or needs to know that the incident has been resolved.
     - Is the incident runbook still relevant or needs to be updated after the incident has been resolved following the existing runbook
 
 Quality for incident manager
@@ -330,20 +330,20 @@ Quality for incident manager
 - Impromptu action taker
     - Brainstorming the solution
 - Can operate under pressure
-- Work methodical
-- Able to ask for help - it always important to resolve the issue align with the impact that it will cause to the busines
-- Sense of ownership and initiative - Monitor post incident to make sure that the issue is not continue to become the problem
+- Work methodically
+- Able to ask for help - it is always important to resolve the issue and align with the impact that it will cause on the business
+- Sense of ownership and initiative - Monitor post-incident to make sure that the issue does not continue to become the problem
 - Good communicator
 
 Some tips from the speaker on how can we be more proactive after the incident happens:
 - During the on-call shifts handoffs
-  - Celebrate team success of resolving the issue
+  - Celebrate the team's success in resolving the issue
 - Post-mortem notes - create PIR immediately
 - Create an action to stabilize the environment that causing the incident
 - Adjust the alert - fix the `false positive` alert - don't wait for the next on-call to do it
-- Update the incident runbooks if needs be
+- Update the incident runbooks if needs to be
 - See if there are parts that can be automated - candidates for self-remediation
-- Once the issue is handled - share the knowledge to a broader engineering team 
+- Once the issue is handled - share the knowledge with a broader engineering team 
 </Collapsible>
 
 ## 5. Hacked
@@ -356,10 +356,10 @@ If you go by media releases, security breaches don't happen that often. In pract
 What happens when you get hacked? We'll go through different scenarios and discuss what you can do about it.
 
 <Collapsible title="Notes">
-- First problem - commiting secret key to the public github repo
-  - This remind me of the same incident that affecting me during my uni. time. It wasn't as much as the speakers
-    demonstrate (Mine was around $4k within 80hrs), but it has shown that how this small mistake can cost you money.
-    Fortunately, AWS waive that cost within my account as I've begged for mercy as I'm only student at that time.
+- First problem - committing a secret key to the public GitHub repo
+  - This reminds me of the same incident that affected me during my uni. time. It wasn't as much as the speakers
+    demonstrate (Mine was around $4k within 80hrs), but it has shown how this small mistake can cost you money.
+    Fortunately, AWS waive that cost within my account as I begged for mercy as I'm only a student at that time.
 
 - Security policy is there for a reason, don’t look for a way to sideway the security policy
 
@@ -370,33 +370,33 @@ How to mitigate the security issue
 - Learn about how to mitigate the risk of the security
 - Questioning about every security policy in place
 
-Do something that make us better at what we’re doing in a secure way
+Do something that makes us better at what we’re doing in a secure way
 
-Overall, the talks is presented in a theatrical way and engaging to showcase several scenarios where we can get hacked
+Overall, the talk is presented theatrically and engaging to showcase several scenarios where we can get hacked
 in the real world
 </Collapsible>
 
-## 6. Attacking the front-end: Modern-day client side security
+## 6. Attacking the front-end: Modern-day client-side security
 
 **Speaker**: Kaif Hasan - Product Security Engineer - Atlassian
 
 ## Summary
 We’ve come a long way since the early days of client-side security when injection attacks like XSS and SQLi were rampant. Modern frameworks come with a lot of out-of-the-box protections. But with the frameworks, the attackers have also evolved. In this talk, Kaif Ahsan, a Product Security Engineer at Atlassian, will share the most common ways modern web applications are hacked. Many of which he regularly comes across at work.
 
-We will various techniques and examples of exploiting modern web applications like React, Angular. Through practical examples, code samples and much the developers will understand how the attacks happen and their impact. Furthermore, we will be exploring various best practices to tackle these vulnerabilities and build secure web apps.
+We will various techniques and examples of exploiting modern web applications like React, and Angular. Through practical examples, code samples and much the developers will understand how the attacks happen and their impact. Furthermore, we will be exploring various best practices to tackle these vulnerabilities and build secure web apps.
 
 <Collapsible title="Notes">
 Common dangerous security issues
 
 - Code Injection Attacks
-- Cross-Site scripting (XSS)
+- Cross-Site Scripting (XSS)
     - Context-sensitive output encoding is the best way to prevent XSS
     - XSS in React
-        - Improper sanitisation while outputing html - the use `dangerouslySetInnerHTML`
-            - Can be solved by using the 3rd party library to sanitise the HTML output for this props
-        - React escape hatch - a way for react to direct DOM manipulation
-        - URLs, CSS, Markdown all can be used to run malicious code
-            - Avoid take URL as an input
+        - Improper sanitisation while outputting html - the use of `dangerouslySetInnerHTML`
+            - Can be solved by using the 3rd party library to sanitise the HTML output for these props
+        - React escape hatch - a way to react to direct DOM manipulation
+        - URLs, CSS, and Markdown all can be used to run malicious code
+            - Avoid taking URL as an input
             - Do URLs sanitisation
         - Look for React Vulnerable / React Suspended
     - Angular do better input sanitisation than React
@@ -404,12 +404,12 @@ Common dangerous security issues
         - Template Injection Attack - is existed in version 1.6
         - Solution
             - Stick to Angular default ways
-- Use CSRF Tokens as a security measures against request from the UI 
-    - Some strategies atlassian has taken
-      - State-changing opeartions must not use GET requests, as CSRF tokens cannot protect these.
+- Use CSRF Tokens as a security measure against requests from the UI 
+    - Some strategies Atlassian has taken
+      - State-changing operations must not use GET requests, as CSRF tokens cannot protect these.
       - Session cookies should have the Samesite attribute set to Strict when possible.
       - All state-changing requests must transmit a valid CSRF token for the request to be accepted.
-      - API gateway with a CORS whitelist. Layered defense.
+      - API gateway with a CORS whitelist. Layered defence.
 
 Resources
 - https://www.youtube.com/@Everything_Cyber
@@ -423,11 +423,11 @@ Resources
 ### Summary
 We’ve all been guilty of it, a new technology comes along and you’re desperate to try it out. Before you know it, you’ve installed a bunch of dependencies, completed a brilliant “refactor” and shipped to prod. What you didn’t realise through all the high-fives and back-slapping with your team, is you’ve inadvertently shipped an extra 10mb of JS to the end user!
 
-It’s not a new term but Hype Driven Development is more prevalent in the JavaScript ecosystem than ever. By the end of this talk you’ll see we may not need to JavaScript all the things and sometimes boring can be better…
+It’s not a new term but Hype Driven Development is more prevalent in the JavaScript ecosystem than ever. By the end of this talk you’ll see we may not need JavaScript for all the things and sometimes boring can be better…
 
 ### Notes
-The closing keynote for the first day conference more into a stories of the journey the speaker has gone through from
-multiple iterations in Web development technology and how he emphasise the important of sticking to the fundamentals
+The closing keynote for the first-day conference more into stories of the journey the speaker has gone through from
+multiple iterations in Web development techniques and how he emphasises the importance of sticking to the fundamentals
 instead of following the hype.
 
 
@@ -438,24 +438,24 @@ instead of following the hype.
 **Speaker**: Serg Hospodarets - Executive VP Global Engineering - Finalsite
 
 ### Summary
-We are switching from the era of Front-End DevOps to a Platform Engineering- to create company-specific platform to develop and deliver their products.
+We are switching from the era of Front-End DevOps to Platform Engineering- to create a company-specific platform to develop and deliver their products.
 
-It goes through the stages of a Design System creation, integrated in a UI Framework (React, Vue, Angular…), and building an abstraction level on top of Cloud providers (AWS, Azure etc.) and tooling (K8S, Terraform..), and CI/CD pipelines (GitLab, Github) + observability and security enablement, to move the cognitive load from the product delivery teams.
+It goes through the stages of a Design System creation, integrated with a UI Framework (React, Vue, Angular…), and building an abstraction level on top of Cloud providers (AWS, Azure etc.) and tooling (K8S, Terraform..), and CI/CD pipelines (GitLab, Github) + observability and security enablement, to move the cognitive load from the product delivery teams.
 
-Picking the right tooling, foster the culture, solution and approaches is complex, but there is a common set of patterns and tools, so this talk is to describe both the reasons why Platform Engineering is a must, and to demo which tools and approaches will help you in this journey.
+Picking the right tooling, and fostering the culture, solution and approaches is complex, but there is a common set of patterns and tools, so this talk is to describe both the reasons why Platform Engineering is a must and to demo which tools and approaches will help you in this journey.
 
 <Collapsible title="Notes">
 Problem to solve 
 
 - Acquired different companies (3) with diff. tech. stack and UX/UI solutions
-    - Different external services consumed by these diff. companies and we need to reduce the cost for it
+    - Different external services consumed by these diffs. companies and we need to reduce the cost of it
     - 3 days to roll out security fixes
     - PROD deployment only once a month
 
 Frontend-Platform
 
 - Docusaurs (first step - minimum effort)
-    - Documentation for all part of engineering stakeholder
+    - Documentation for all parts of engineering stakeholder
 - Engineering portal (backstage)
 
 Tooling for demo
@@ -467,32 +467,32 @@ Stage of frontend-platform
 - Childhood stage
     - Build the library on top of the unstyled or headless libraries such as Radix or DaisyUI
         - Adapt with the use of AI tools (example in Warp AI)
-    - Build a template generator to speedup the creation of new application for different team
+    - Build a template generator to speed up the creation of new applications for a different team
         - How to implement this for `next-template`??
     - Utilise AI to drive the documentation effort
         - Example use markprompt.com
 - Adolescence stage
-    - There’s a tool from atlassian / salesforce that works like linter for design token change
+    - There’s a tool from Atlassian / Salesforce that works like Linter for design token change
     - Tooling upgradability
-        - Provide a non-breaking additive changes and LTS versions drop timeline
+        - Provide non-breaking additive changes and LTS versions drop timeline
         - Use codeshift/codemod for frontend code transformer
         - Use renovate for dependencies upgrade
-        - Microservices, apss, infra use JHipster
+        - Microservices, apps, and infra use JHipster
 
-- Resources for platform-engineering https://github.com/shospodarets/awesome-platform-engineering
+- Resources for platform engineering https://github.com/shospodarets/awesome-platform-engineering
 
 Opinion from the speaker
 
-- Treat platform as a product
+- Treat the platform as a product
     - Internal team are your customers, provide support, etc
     - Invest in Platform PM and DevX culture
     - Evangelise - regular releases, demos, newsletters
-- Prefer golden path over golden cage
+- Prefer golden path over the golden cage
 - Foster the Pull vs Push culture
 
-Tracking customers traction by using backstage as a platform team 
+Tracking customer traction by using backstage as a platform team 
 
-- Use backstage tech. radar to measure adoption of the components
+- Use backstage tech. radar to measure the adoption of the components
 </Collapsible>
 
 ## 1. Taking advantage of AI to help you write code
@@ -500,15 +500,15 @@ Tracking customers traction by using backstage as a platform team
 **Speaker**: Lachlan Hunt - Senior Developer - Atlassian
 
 ### Summary
-In this session, we'll explore how AI tools can help developers write better code. We'll cover various ways in which these tools can be used to generate code, improve skills, and debug errors. We'll also discuss their benefits, including time-saving and overall improvement of coding abilities. Moreover, we'll examine their limitations and provide tips on using them effectively. Whether you're a seasoned developer or just starting out, this session will offer valuable insights into how AI can assist you in writing better code and honing your coding skills.
+In this session, we'll explore how AI tools can help developers write better code. We'll cover various ways in which these tools can be used to generate code, improve skills, and debug errors. We'll also discuss their benefits, including time-saving and overall improvement of coding abilities. Moreover, we'll examine their limitations and provide tips on using them effectively. Whether you're a seasoned developer or just starting, this session will offer valuable insights into how AI can assist you in writing better code and honing your coding skills.
 
 ### Notes
-In this talk, the speakers mostly talked about his experience using generative AI tools and AI coding assistant as a
-part of the development workflow. He showcase an example of using the AI tools to build a calculator application. In his
-demo, he wasn't just showing how he use AI tools to help building out the pieces for the Calculator, but also
-understanding the concept around algorithm that's in the app itself.
+In this talk, the speaker mostly talked about his experience using generative AI tools and AI coding assistants as a
+part of the development workflow. He showcases an example of using AI tools to build a calculator application. In his
+demo, he wasn't just showing how he use AI tools to help build out the pieces for the Calculator, but also
+understanding the concept around the algorithm that's in the app itself.
 
-Overall, there's nothing new in this talk for me personally, but it always good to see how other people utilising this
+Overall, there's nothing new in this talk for me, but it is always good to see how other people utilise this
 AI tools in their development workflow.
 
 ## 2. Falling off the Edge: Practical Uses for Edge Computing
@@ -521,29 +521,29 @@ Unlock the full potential of edge computing with this session. We'll dive deep i
 
 Learn about new runtimes and frameworks like Deno and Fresh that can take advantage of edge computing. See how easy it is to deploy to the edge and understand what it means to deploy your code as close as possible to your users and the benefits it brings.
 
-The session will give you real-world examples and uses cases of edge computing so you can apply it to your work. We'll also cover the limitations of the edge and when it may not be the best fit for your project.
+The session will give you real-world examples and uses cases of edge computing so you can apply them to your work. We'll also cover the limitations of the edge and when it may not be the best fit for your project.
 
 You will walk away from this session with the knowledge and skills to get the most out of edge computing.
 
 <Collapsible title="Notes">
 Edge Computing
 
-- Location based compute resources
+- Location-based compute resources
 
 Examples:
 
 - Netlify Edge
 - Cloudflare Worker
 
-Edge → Serverless function that’s run close to where’s your user (consumer) call it
+Edge → Serverless function that’s run close to where’s your user (consumer) calls it
 
-- Runtiime → the runtime version of the function that’s running
+- Runtime → the runtime version of the function that’s running
 - WinterCG
 - https://github.com/vercel/edge-runtime
 
-Edge computing to answer the issue with data grows exponentially, to distribute the load of transferring data between different location of the consumer (users)
+Edge computing to answer the issue with data grows exponentially, to distribute the load of transferring data between different locations of the consumer (users)
 
-Practical uses for edge computing
+Practical Uses for edge computing
 
 Platform the speaker mentioned in regards to DB for edge compute
 
@@ -565,13 +565,13 @@ Push-based front-end is a modern approach to web development that is gaining tra
 
 This approach provides several benefits including faster data delivery, reduced network traffic, and improved user experience.
 
-In this talk Aliaksei will walk you through the the push-based systems and how to approach that using modern front-end frameworks and libraries.
+In this talk, Aliaksei will walk you through push-based systems and how to approach that using modern front-end frameworks and libraries.
 
 ### Notes
 
 I have a high expectation for this talk to learn something about this architecture, but it turns out the whole material
-is a bit dry and when it gets into the topic that interesting enough, the speaker didn't deep dive into the topic. So,
-unfortunately I didn't learn much from this talk.
+is a bit dry and when it gets into the topic that is interesting enough, the speaker didn't deep dive into the topic. So,
+unfortunately, I didn't learn much from this talk.
 
 ## 4. CSS Container Queries: Reshaping the Way We Approach Responsive Web Design
 
@@ -580,17 +580,17 @@ unfortunately I didn't learn much from this talk.
 ### Summary
 The rise of component-based architecture has brought new challenges to web developers, including the need for more granular control over layouts within individual components. While media queries have been a cornerstone of responsive web design for over a decade, they fall short when it comes to solving layout issues at the component level. Enter CSS container queries, a new tool that allows developers to style components based on their available space within a containing element. With container queries, we can use the same component everywhere, but it's restyling itself to fit best within the UI where it lives.
 
-In this talk, we will explore the capabilities of container queries and how they can be used to achieve complex layouts without the need for heavy scripting or ResizeObserver hacks. We will cover the different container types, including inline-size and size, and showcase real-world examples of container queries in action with flexbox and grid.
+In this talk, we will explore the capabilities of container queries and how they can be used to achieve complex layouts without the need for heavy scripting or ResizeObserver hacks. We will cover the different container types, including inline size and size, and showcase real-world examples of container queries in action with Flexbox and grid.
 
 <Collapsible title="Notes">
-Before container queries available, the existing solution is to use the media queries to determine the different layout for different viewports
+Before container queries are available, the existing solution is to use the media queries to determine the different layouts for different viewports
 
 
 [Container queries](https://web.dev/cq-stable/)
 - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries
 - Restyle the layout of the component relative to the parent component sizing
 
-Media queries can also be used with range syntax 
+Media queries can also be used with a range of syntax 
 
 ```css
 @media (900 <= width <= 1800px)
@@ -604,7 +604,7 @@ Define it with the below syntax
 - Container-name
 - Container
 
-And query it with `@container` query.
+And query it with the `@container` query.
 
 `grid-template-column` css (https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns) - auto-fill vs auto-fit
 </Collapsible>
@@ -616,7 +616,7 @@ And query it with `@container` query.
 ### Summary
 When people talk about CSS layouts these days, it’s all about flex and grid. And, don’t get me wrong, flex and grid are pretty cool. But normal flow is still the default layout on the web, so that's what most of your app is probably using.
 
-And given that normal flow is so fundamental, it's important to have a good understanding of how it works. But how it works can be a little counter-intuitive. Why, for instance, can we easily centre a thing horizontally, but not vertically?
+And given that normal flow is so fundamental, it's important to have a good understanding of how it works. But how it works can be a little counterintuitive. Why, for instance, can we easily centre a thing horizontally, but not vertically?
 
 Let's have a look at the mental model behind normal flow, what kind of things it's good for, and when some of the newer, shinier features might be a better choice.
 
@@ -632,7 +632,7 @@ What normal flow is for
     - Sized absolutely
     - `<article>, <details>, <p>, <fieldset>`
 
-`margin-inline-start` automatically add margin that works both on LTR and RTL language
+`margin-inline-start` automatically adds a margin that works both on LTR and RTL language
 
 - Block element create inline boxes but doesn’t live in it
 
@@ -649,31 +649,31 @@ How normal flow works
 
 ### Summary
 
-Wouldn’t you love to automatically zap code bugs before releasing to production? How about before your code even gets run? Static analysis tools scrutinize your code as you write it - giving you blazing fast feedback at development time. We’re going to go into how that works, why it’s useful, and -best of all- how to enable the best configurations for ESLint, TypeScript, and their associated tooling in your app.
+Wouldn’t you love to automatically zap code bugs before releasing them to production? How about before your code even gets run? Static analysis tools scrutinize your code as you write it - giving you blazing-fast feedback at development time. We’re going to go into how that works, why it’s useful, and -best of all how to enable the best configurations for ESLint, TypeScript, and their associated tooling in your app.
 
-We'll cover the tooling differences between formatters, linters, and type checkers, along with how to appropriately set up each of those tools for local development and CI/builds. We'll briefly skirt around the deep configuration rabbit holes one can joyously fall into when setting up ESLint plugins, then find ourselves using ESLint and TypeScript as documentation sources and to educate developers on general and team-specific best practices. This talk will have you detecting bugs, bad practices, and code smells at lightning speed! ⚡️
+We'll cover the tooling differences between formatters, linters, and type checkers, along with how to appropriately set up each of those tools for local development and CI/builds. We'll briefly skirt around the deep configuration rabbit holes one can joyously fall into when setting up ESLint plugins, then find ourselves using ESLint and TypeScript as documentation sources and educating developers on general and team-specific best practices. This talk will have you detecting bugs, bad practices, and code smells at lightning speed! ⚡️
 
 <Collapsible title="Notes">
-This is more into an intro talk on the need of applying the tools to improve the quality and standard within the code than anything else.
+This is more of an intro talk on the need of applying the tools to improve the quality and standard within the code than anything else.
 
-I like the fact that Josh deliver the talk in the attractive and energizing but there’s not many new things that I learn from this talk.
+I like the fact that Josh delivers the talk in an attractive and energizing but there are not many new things that I learn from this talk.
 
 Static Analysis
 
-- Tooling that scrutinise your code without moving it vs. dynamic analysis - Test
+- Tooling that scrutinises your code without moving it vs. dynamic analysis - Test
     
 Spectrum in the static analysis
 
 Formatter - Linter - Types
 
-The speaker discuss the detail of each of the spectrum above
+The speaker discusses the detail of each of the spectrum above
 
 Typescript is four things
 
 - Language Service
-    - Program that run in your editor that check for types
+    - Program that runs in your editor that checks for types
 - Compiler
 - Type Checker
-    - Program that reads in files and report likely bugs/mismatch
+    - Program that reads in files and reports likely bugs/mismatch
 - Programming Language
 </Collapsible>
