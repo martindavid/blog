@@ -9,6 +9,7 @@ import { Video } from './Video'
 import { Figure } from './Figure'
 import Pre from './Pre'
 import { BlogNewsletterForm } from './NewsletterForm'
+import { Collapsible } from './Collapsible'
 
 const Wrapper: React.ComponentType<{ layout: string }> = ({ layout, ...rest }) => {
   const Layout = require(`../layouts/${layout}`).default
@@ -30,6 +31,8 @@ export const MDXComponents = {
   Figure,
   // @ts-ignore
   Video,
+  // @ts-ignore
+  Collapsible,
 }
 
 interface Props {
