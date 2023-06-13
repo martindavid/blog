@@ -5,7 +5,7 @@ tags: ['conference', 'learning-and-development']
 draft: false
 summary: Last week, I attended the Web Directions Code conference. It's a two days conference that covers various different topics around web development. The theme for this year conference was (as I quote from their website) "front of the front end" and the "back of the front end" –the technologies (JavaScript, the React ecosystem, CSS, browser APIs), and practices (privacy, security, performance, platform engineering and operations, and more) that underpin today's web sites and app. In this post, I'd like to share some notes from the talks that I attended and the learning I have from that.
 images:
-  []
+  ['https://res.cloudinary.com/martin-labs/image/upload/q_auto/v1686639242/Blog/web-directions-2023/WD2023-badge.jpg']
 layout: PostLayout
 ---
 
@@ -334,6 +334,16 @@ Quality for incident manager
 - Able to ask for help - it always important to resolve the issue align with the impact that it will cause to the busines
 - Sense of ownership and initiative - Monitor post incident to make sure that the issue is not continue to become the problem
 - Good communicator
+
+Some tips from the speaker on how can we be more proactive after the incident happens:
+- During the on-call shifts handoffs
+  - Celebrate team success of resolving the issue
+- Post-mortem notes - create PIR immediately
+- Create an action to stabilize the environment that causing the incident
+- Adjust the alert - fix the `false positive` alert - don't wait for the next on-call to do it
+- Update the incident runbooks if needs be
+- See if there are parts that can be automated - candidates for self-remediation
+- Once the issue is handled - share the knowledge to a broader engineering team 
 </Collapsible>
 
 ## 5. Hacked
