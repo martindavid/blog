@@ -1453,15 +1453,15 @@
   resolved "https://registry.yarnpkg.com/@fal-works/esbuild-plugin-global-externals/-/esbuild-plugin-global-externals-2.1.2.tgz#c05ed35ad82df8e6ac616c68b92c2282bd083ba4"
   integrity sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==
 
-"@fontsource/poppins@5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-5.0.2.tgz#0f06a1adb3f8584114818e7c21a7d480450dae7c"
-  integrity sha512-504RESq2qbyVxxpjP2TyVQODOWakuBHBD3AtYurtmNHosC4x+mjyOlRSdW2QjsILezlwFCnLkYuGUzYiV44sEg==
+"@fontsource/poppins@5.0.14":
+  version "5.0.14"
+  resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-5.0.14.tgz#c7ede0730859dc0c1b85d1a92e4cb0f2223db0ae"
+  integrity sha512-nmM1zpPo3Uh4JcGAVSQuWaZNYh2FbbwWhZ5t6hRaynmJaNTBW85d3nEh9zMmzI0HX7X5xqQVdRHeDatKpOGsnA==
 
-"@fontsource/prompt@5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/prompt/-/prompt-5.0.2.tgz#5f1c43af4ce30d7543e9dd0dc25956eea94b47df"
-  integrity sha512-Ca3VmBYl40iC1MO63d4jEKrtslOm6WyG/TtweH39GL5EnCX+vLSRRBskAjP9nXF4hWFQ0DkHCbFk49JWUEiRIQ==
+"@fontsource/prompt@5.0.14":
+  version "5.0.14"
+  resolved "https://registry.yarnpkg.com/@fontsource/prompt/-/prompt-5.0.14.tgz#90c625ada64bd4da098f73f1e50c61c181f216b7"
+  integrity sha512-62qsomeqmBypufjRO0g034ipZCnXB9UcBKvL4kwVpFNFNs9YJF3nlT9U6dOmxW8uv0b+PSKzXsIYmci/q8jegw==
 
 "@humanwhocodes/config-array@^0.11.10":
   version "0.11.10"
