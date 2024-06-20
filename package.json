@@ -60,7 +60,7 @@
     "eslint-plugin-prettier": "4.2.1",
     "file-loader": "6.2.0",
     "globby": "11.1.0",
-    "husky": "8.0.3",
+    "husky": "9.0.11",
     "inquirer": "9.2.23",
     "lint-staged": "13.2.2",
     "next-remote-watch": "2.0.0",
