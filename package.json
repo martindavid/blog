@@ -11,7 +11,7 @@
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
     "lint:format": "prettier --check '**/*'",
     "lint:fix": "yarn -s lint --fix && yarn -s lint:format --write",
-    "prepare": "husky install",
+    "prepare": "husky",
     "type:checks": "tsc",
     "dedupe:dependencies": "yarn-deduplicate -s fewer yarn.lock && yarn install"
   },
