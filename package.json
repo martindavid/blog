@@ -8,12 +8,13 @@
     "build": "next build && node ./scripts/generate-sitemap",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
-    "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
+    "test:types": "tsc --build --force",
+    "lint:ts": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
     "lint:format": "prettier --check '**/*'",
-    "lint:fix": "yarn -s lint --fix && yarn -s lint:format --write",
+    "lint:fix": "yarn -s lint:ts --fix && yarn -s lint:format --write",
     "prepare": "husky",
     "type:checks": "tsc",
-    "dedupe:dependencies": "yarn-deduplicate -s fewer yarn.lock && yarn install"
+    "dedupe:dependencies": "pnpm dedupe"
   },
   "dependencies": {
     "@fontsource/poppins": "5.0.14",
@@ -49,7 +50,7 @@
     "@next/bundle-analyzer": "14.2.4",
     "@svgr/webpack": "8.1.0",
     "@types/react": "18.3.3",
-    "@types/tailwindcss": "3.1.0",
+    "@types/unist": "^3.0.2",
     "@typescript-eslint/eslint-plugin": "5.59.9",
     "@typescript-eslint/parser": "5.59.9",
     "cross-env": "7.0.3",
@@ -69,8 +70,7 @@
     "socket.io": "4.7.5",
     "socket.io-client": "4.7.5",
     "stylelint": "^15.7.0",
-    "typescript": "5.5.2",
-    "yarn-deduplicate": "^6.0.2"
+    "typescript": "5.5.2"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
@@ -79,5 +79,6 @@
     "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
       "prettier --write"
     ]
-  }
+  },
+  "packageManager": "pnpm@9.1.4"
 }
