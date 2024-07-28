@@ -8,6 +8,7 @@ import TableWrapper from './TableWrapper'
 import { Collapsible } from './Collapsible'
 import { YoutubeEmbed } from './YoutubeEmbed'
 import { Video } from './Video'
+import { Figure } from './Figure'
 
 export const components: MDXComponents = {
   Image,
@@ -19,4 +20,5 @@ export const components: MDXComponents = {
   Collapsible,
   YoutubeEmbed,
   Video,
+  Figure,
 }

@@ -5,6 +5,7 @@
   "scripts": {
     "start": "next dev",
     "dev": "cross-env INIT_CWD=$PWD next dev",
+    "reset": "rm -rf node_modules .next && pnpm install",
     "build": "cross-env INIT_CWD=$PWD next build && cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/postbuild.mjs",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
@@ -13,7 +14,6 @@
     "lint:format": "prettier --check '**/*'",
     "lint:fix": "pnpm -s lint:ts --fix && pnpm -s lint:format --write",
     "prepare": "husky",
-    "type:checks": "tsc",
     "dedupe:dependencies": "pnpm dedupe",
     "npm:refresh": "pnpm up -L -i -r && pnpm dedupe:dependencies"
   },
