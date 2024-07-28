@@ -1,3 +1,5 @@
+'use client'
+
 interface Props {
   id: string
   width?: string
@@ -17,7 +19,6 @@ export const YoutubeEmbed = ({
       height={height}
       src={`https://www.youtube.com/embed/${id}`}
       title={title}
-      frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
     />

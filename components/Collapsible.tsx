@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import * as RadixCollapsible from '@radix-ui/react-collapsible'
 import { RowSpacingIcon, Cross2Icon } from '@radix-ui/react-icons'
