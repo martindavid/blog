@@ -1,3 +1,5 @@
+const { withContentlayer } = require('next-contentlayer2')
+
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -44,7 +46,7 @@ const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
   {
     key: 'Strict-Transport-Security',
-    value: 'max-age=31536000; includeSubDomains; preload',
+    value: 'max-age=31536000; includeSubDomains',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
   {
@@ -53,79 +55,47 @@ const securityHeaders = [
   },
 ]
 
+const output = process.env.EXPORT ? 'export' : undefined
+const basePath = process.env.BASE_PATH || undefined
+const unoptimized = process.env.UNOPTIMIZED ? true : undefined
+
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
-module.exports = withBundleAnalyzer({
-  reactStrictMode: true,
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-  eslint: {
-    dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
-  },
-  images: {
-    domains: ['res.cloudinary.com'],
-  },
-  async redirects() {
-    return [
-      {
-        source: '/software-development/ci-cd-flask-nextjs-docker',
-        destination: '/blog/ci-cd-flask-nextjs-docker',
-        permanent: true,
-      },
-      {
-        source: '/random-notes/error-after-upgrade-openssl',
-        destination: '/blog/error-after-upgrade-openssl',
-        permanent: true,
-      },
-      {
-        source: '/software-development/setup-flask-nextjs-app-with-docker',
-        destination: 'blog/setup-flask-nextjs-application-with-docker',
-        permanent: true,
-      },
-      {
-        source: '/software-development/nextjs-contentful-app',
-        destination: '/blog/nextjs-contentful-app',
-        permanent: true,
-      },
-      {
-        source: '/life/lesson-from-first-time-pte-exam',
-        destination: '/blog/lesson-from-first-time-pte-exam',
-        permanent: true,
-      },
-      {
-        source: '/random-notes/officially-vim-user',
-        destination: '/blog/officially-vim-user',
-        permanent: true,
-      },
-    ]
-  },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: securityHeaders,
-      },
-    ]
-  },
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.(png|jpe?g|gif|mp4)$/i,
-      use: [
+module.exports = () => {
+  const plugins = [withContentlayer, withBundleAnalyzer]
+  return plugins.reduce((acc, next) => next(acc), {
+    output,
+    basePath,
+    reactStrictMode: true,
+    pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+    eslint: {
+      dirs: ['app', 'components', 'layouts', 'scripts'],
+    },
+    images: {
+      remotePatterns: [
         {
-          loader: 'file-loader',
-          options: {
-            publicPath: '/_next',
-            name: 'static/media/[name].[hash].[ext]',
-          },
+          protocol: 'https',
+          hostname: 'res.cloudinary.com',
         },
       ],
-    })
+      unoptimized,
+    },
+    async headers() {
+      return [
+        {
+          source: '/(.*)',
+          headers: securityHeaders,
+        },
+      ]
+    },
+    webpack: (config, options) => {
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      })
 
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack'],
-    })
-
-    return config
-  },
-})
+      return config
+    },
+  })
+}

@@ -1,48 +1,22 @@
-/* eslint-disable react/display-name */
-import React, { useMemo } from 'react'
-import { getMDXComponent } from 'mdx-bundler/client'
+import TOCInline from 'pliny/ui/TOCInline'
+import Pre from 'pliny/ui/Pre'
+import BlogNewsletterForm from 'pliny/ui/BlogNewsletterForm'
+import type { MDXComponents } from 'mdx/types'
 import Image from './Image'
 import CustomLink from './Link'
-import TOCInline from './TOCInline'
+import TableWrapper from './TableWrapper'
+import { Collapsible } from './Collapsible'
 import { YoutubeEmbed } from './YoutubeEmbed'
 import { Video } from './Video'
-import { Figure } from './Figure'
-import Pre from './Pre'
-import { BlogNewsletterForm } from './NewsletterForm'
-import { Collapsible } from './Collapsible'
 
-const Wrapper: React.ComponentType<{ layout: string }> = ({ layout, ...rest }) => {
-  const Layout = require(`../layouts/${layout}`).default
-  return <Layout {...rest} />
-}
-
-export const MDXComponents = {
+export const components: MDXComponents = {
   Image,
-  //@ts-ignore
   TOCInline,
   a: CustomLink,
   pre: Pre,
-  wrapper: Wrapper,
-  //@ts-ignore
+  table: TableWrapper,
   BlogNewsletterForm,
-  // @ts-ignore
-  YoutubeEmbed,
-  // @ts-ignore
-  Figure,
-  // @ts-ignore
-  Video,
-  // @ts-ignore
   Collapsible,
-}
-
-interface Props {
-  layout: string
-  mdxSource: string
-  [key: string]: unknown
-}
-
-export const MDXLayoutRenderer = ({ layout, mdxSource, ...rest }: Props) => {
-  const MDXLayout = useMemo(() => getMDXComponent(mdxSource), [mdxSource])
-
-  return <MDXLayout layout={layout} components={MDXComponents} {...rest} />
+  YoutubeEmbed,
+  Video,
 }
