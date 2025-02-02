@@ -16,9 +16,9 @@ runs:
       with:
         node-version-file: .nvmrc
         registry-url: https://npm.pkg.github.com
-        cache: "pnpm"
+        cache: "yarn"
 
-    - name: pnpm install
+    - name: yarn install
       shell: bash
       run: |
-        pnpm install --frozen-lockfile
+        yarn install --frozen-lockfile
