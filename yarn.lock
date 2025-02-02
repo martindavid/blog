@@ -1483,18 +1483,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@contentlayer2/cli@npm:0.4.3":
-  version: 0.4.3
-  resolution: "@contentlayer2/cli@npm:0.4.3::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40contentlayer2%2Fcli%2F-%2Fcli-0.4.3.tgz"
-  dependencies:
-    "@contentlayer2/core": "npm:0.4.3"
-    "@contentlayer2/utils": "npm:0.4.3"
-    clipanion: "npm:^3.2.1"
-    typanion: "npm:^3.12.1"
-  checksum: 10c0/a556f870f6f6c047eedd24f5cbee8558eeb602c6da9ecffe0f32469d24d174e2d732db7d7be8417469223ccf152ba02156b5cfcf759c185eeecaba184869c005
-  languageName: node
-  linkType: hard
-
 "@contentlayer2/cli@npm:0.5.3":
   version: 0.5.3
   resolution: "@contentlayer2/cli@npm:0.5.3::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40contentlayer2%2Fcli%2F-%2Fcli-0.5.3.tgz"
@@ -1507,50 +1495,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@contentlayer2/client@npm:0.4.3":
-  version: 0.4.3
-  resolution: "@contentlayer2/client@npm:0.4.3::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40contentlayer2%2Fclient%2F-%2Fclient-0.4.3.tgz"
-  dependencies:
-    "@contentlayer2/core": "npm:0.4.3"
-  checksum: 10c0/817b4c8afb01e31c695fe45c0cbc1812e1cb6d64a31ce4b2263dd3fabc9f06292f178289b35ea6317aaad9e1679153ca081af1a76132e649cfcdcd6b1241d219
-  languageName: node
-  linkType: hard
-
 "@contentlayer2/client@npm:0.5.3":
   version: 0.5.3
   resolution: "@contentlayer2/client@npm:0.5.3::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40contentlayer2%2Fclient%2F-%2Fclient-0.5.3.tgz"
   dependencies:
     "@contentlayer2/core": "npm:0.5.3"
   checksum: 10c0/3d4c149b1db503ec722fed0ecfbc7972907d19146ea2e269d7c506602ebaea8fc336268be0f2646d59a74991d5717ce20107e35cfc4df9a55f7541e1fa0fd515
-  languageName: node
-  linkType: hard
-
-"@contentlayer2/core@npm:0.4.3":
-  version: 0.4.3
-  resolution: "@contentlayer2/core@npm:0.4.3::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40contentlayer2%2Fcore%2F-%2Fcore-0.4.3.tgz"
-  dependencies:
-    "@contentlayer2/utils": "npm:0.4.3"
-    camel-case: "npm:^4.1.2"
-    comment-json: "npm:^4.2.3"
-    esbuild: "npm:0.17.x || 0.18.x || 0.19.x || 0.20.x"
-    gray-matter: "npm:^4.0.3"
-    mdx-bundler: "npm:^10.0.2"
-    rehype-stringify: "npm:^10.0.0"
-    remark-frontmatter: "npm:^5.0.0"
-    remark-parse: "npm:^11.0.0"
-    remark-rehype: "npm:^11.1.0"
-    source-map-support: "npm:^0.5.21"
-    type-fest: "npm:^4.10.0"
-    unified: "npm:^11.0.4"
-  peerDependencies:
-    esbuild: 0.17.x || 0.18.x || 0.19.x || 0.20.x
-    markdown-wasm: 1.x
-  peerDependenciesMeta:
-    esbuild:
-      optional: true
-    markdown-wasm:
-      optional: true
-  checksum: 10c0/f7d4206c8bb6c485cb13e94aa42e8684465918845898f4341709cf228e8b1a5d7495f166ed0b25edfc8484a33934107297887af886bf4c072c3af0cbd30ff9c0
   languageName: node
   linkType: hard
 
@@ -1583,25 +1533,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@contentlayer2/source-files@npm:0.4.3":
-  version: 0.4.3
-  resolution: "@contentlayer2/source-files@npm:0.4.3::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40contentlayer2%2Fsource-files%2F-%2Fsource-files-0.4.3.tgz"
-  dependencies:
-    "@contentlayer2/core": "npm:0.4.3"
-    "@contentlayer2/utils": "npm:0.4.3"
-    chokidar: "npm:^3.5.3"
-    fast-glob: "npm:^3.2.12"
-    gray-matter: "npm:^4.0.3"
-    imagescript: "npm:^1.2.16"
-    micromatch: "npm:^4.0.5"
-    ts-pattern: "npm:^5.0.6"
-    unified: "npm:^11.0.4"
-    yaml: "npm:^2.3.1"
-    zod: "npm:^3.22.4"
-  checksum: 10c0/1680e99601c1e87330bab7d23be7b23c40bf59f340131aac7bf8ff19386181b9801282e84c1a91a9d8b62baf85cb6134088014ca1134227697268b7265c3fb2c
-  languageName: node
-  linkType: hard
-
 "@contentlayer2/source-files@npm:0.5.3":
   version: 0.5.3
   resolution: "@contentlayer2/source-files@npm:0.5.3::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40contentlayer2%2Fsource-files%2F-%2Fsource-files-0.5.3.tgz"
@@ -1621,17 +1552,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@contentlayer2/source-remote-files@npm:0.4.3":
-  version: 0.4.3
-  resolution: "@contentlayer2/source-remote-files@npm:0.4.3::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40contentlayer2%2Fsource-remote-files%2F-%2Fsource-remote-files-0.4.3.tgz"
-  dependencies:
-    "@contentlayer2/core": "npm:0.4.3"
-    "@contentlayer2/source-files": "npm:0.4.3"
-    "@contentlayer2/utils": "npm:0.4.3"
-  checksum: 10c0/9956907aa5027dc763314f6af8c53e4991ad3470668bdebc6426e73892acfcccb296b0a846222010532bd07f26df89477eb53dfa4415b64aaec69bc6b9d5c353
-  languageName: node
-  linkType: hard
-
 "@contentlayer2/source-remote-files@npm:0.5.3":
   version: 0.5.3
   resolution: "@contentlayer2/source-remote-files@npm:0.5.3::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40contentlayer2%2Fsource-remote-files%2F-%2Fsource-remote-files-0.5.3.tgz"
@@ -1640,39 +1560,6 @@ __metadata:
     "@contentlayer2/source-files": "npm:0.5.3"
     "@contentlayer2/utils": "npm:0.5.3"
   checksum: 10c0/bc70af2b4670c2e45f625ed9d0e7d8d7ff888e6a3ad1b11c9f1b3efe3e9e9ef6a62c9ae06c99ba9e6b5fa4e55d06fe4cd72e413077e323aa316c1a9f13399e98
-  languageName: node
-  linkType: hard
-
-"@contentlayer2/utils@npm:0.4.3":
-  version: 0.4.3
-  resolution: "@contentlayer2/utils@npm:0.4.3::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40contentlayer2%2Futils%2F-%2Futils-0.4.3.tgz"
-  dependencies:
-    "@effect-ts/core": "npm:^0.60.5"
-    "@effect-ts/otel": "npm:^0.15.1"
-    "@effect-ts/otel-sdk-trace-node": "npm:^0.15.1"
-    "@js-temporal/polyfill": "npm:^0.4.4"
-    "@opentelemetry/api": "npm:^1.8.0"
-    "@opentelemetry/core": "npm:^1.24.0"
-    "@opentelemetry/exporter-trace-otlp-grpc": "npm:^0.51.0"
-    "@opentelemetry/resources": "npm:^1.21.0"
-    "@opentelemetry/sdk-trace-base": "npm:^1.21.0"
-    "@opentelemetry/sdk-trace-node": "npm:^1.21.0"
-    "@opentelemetry/semantic-conventions": "npm:^1.21.0"
-    chokidar: "npm:^3.5.3"
-    hash-wasm: "npm:^4.11.0"
-    inflection: "npm:^3.0.0"
-    memfs: "npm:^4.8.2"
-    oo-ascii-tree: "npm:^1.94.0"
-    ts-pattern: "npm:^5.0.6"
-    type-fest: "npm:^4.10.0"
-  peerDependenciesMeta:
-    "@effect-ts/core":
-      optional: true
-    "@effect-ts/otel":
-      optional: true
-    "@effect-ts/otel-node":
-      optional: true
-  checksum: 10c0/0ecaf05aa471b29c15bb4a8e25740fc22806d6adce00149b07e31069cd53ada340f0a39b82fb4f1b6a0ca5a280e4e0cfafc7f9292d629c7af28839b4c8fddd06
   languageName: node
   linkType: hard
 
@@ -1723,9 +1610,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docsearch/react@npm:^3.5.0":
+"@docsearch/react@npm:^3.6.2":
   version: 3.8.3
-  resolution: "@docsearch/react@npm:3.8.3::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40docsearch%2Freact%2F-%2Freact-3.8.3.tgz"
+  resolution: "@docsearch/react@npm:3.8.3"
   dependencies:
     "@algolia/autocomplete-core": "npm:1.17.9"
     "@algolia/autocomplete-preset-algolia": "npm:1.17.9"
@@ -1806,13 +1693,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/aix-ppc64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/aix-ppc64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Faix-ppc64%2F-%2Faix-ppc64-0.20.2.tgz"
-  conditions: os=aix & cpu=ppc64
-  languageName: node
-  linkType: hard
-
 "@esbuild/aix-ppc64@npm:0.23.1":
   version: 0.23.1
   resolution: "@esbuild/aix-ppc64@npm:0.23.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Faix-ppc64%2F-%2Faix-ppc64-0.23.1.tgz"
@@ -1824,13 +1704,6 @@ __metadata:
   version: 0.24.2
   resolution: "@esbuild/aix-ppc64@npm:0.24.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Faix-ppc64%2F-%2Faix-ppc64-0.24.2.tgz"
   conditions: os=aix & cpu=ppc64
-  languageName: node
-  linkType: hard
-
-"@esbuild/android-arm64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/android-arm64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fandroid-arm64%2F-%2Fandroid-arm64-0.20.2.tgz"
-  conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
@@ -1848,13 +1721,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/android-arm@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/android-arm@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fandroid-arm%2F-%2Fandroid-arm-0.20.2.tgz"
-  conditions: os=android & cpu=arm
-  languageName: node
-  linkType: hard
-
 "@esbuild/android-arm@npm:0.23.1":
   version: 0.23.1
   resolution: "@esbuild/android-arm@npm:0.23.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fandroid-arm%2F-%2Fandroid-arm-0.23.1.tgz"
@@ -1866,13 +1732,6 @@ __metadata:
   version: 0.24.2
   resolution: "@esbuild/android-arm@npm:0.24.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fandroid-arm%2F-%2Fandroid-arm-0.24.2.tgz"
   conditions: os=android & cpu=arm
-  languageName: node
-  linkType: hard
-
-"@esbuild/android-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/android-x64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fandroid-x64%2F-%2Fandroid-x64-0.20.2.tgz"
-  conditions: os=android & cpu=x64
   languageName: node
   linkType: hard
 
@@ -1890,13 +1749,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/darwin-arm64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/darwin-arm64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fdarwin-arm64%2F-%2Fdarwin-arm64-0.20.2.tgz"
-  conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
 "@esbuild/darwin-arm64@npm:0.23.1":
   version: 0.23.1
   resolution: "@esbuild/darwin-arm64@npm:0.23.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fdarwin-arm64%2F-%2Fdarwin-arm64-0.23.1.tgz"
@@ -1908,13 +1760,6 @@ __metadata:
   version: 0.24.2
   resolution: "@esbuild/darwin-arm64@npm:0.24.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fdarwin-arm64%2F-%2Fdarwin-arm64-0.24.2.tgz"
   conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@esbuild/darwin-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/darwin-x64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fdarwin-x64%2F-%2Fdarwin-x64-0.20.2.tgz"
-  conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
@@ -1932,13 +1777,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/freebsd-arm64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/freebsd-arm64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Ffreebsd-arm64%2F-%2Ffreebsd-arm64-0.20.2.tgz"
-  conditions: os=freebsd & cpu=arm64
-  languageName: node
-  linkType: hard
-
 "@esbuild/freebsd-arm64@npm:0.23.1":
   version: 0.23.1
   resolution: "@esbuild/freebsd-arm64@npm:0.23.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Ffreebsd-arm64%2F-%2Ffreebsd-arm64-0.23.1.tgz"
@@ -1950,13 +1788,6 @@ __metadata:
   version: 0.24.2
   resolution: "@esbuild/freebsd-arm64@npm:0.24.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Ffreebsd-arm64%2F-%2Ffreebsd-arm64-0.24.2.tgz"
   conditions: os=freebsd & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@esbuild/freebsd-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/freebsd-x64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Ffreebsd-x64%2F-%2Ffreebsd-x64-0.20.2.tgz"
-  conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
@@ -1974,13 +1805,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-arm64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-arm64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-arm64%2F-%2Flinux-arm64-0.20.2.tgz"
-  conditions: os=linux & cpu=arm64
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-arm64@npm:0.23.1":
   version: 0.23.1
   resolution: "@esbuild/linux-arm64@npm:0.23.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-arm64%2F-%2Flinux-arm64-0.23.1.tgz"
@@ -1992,13 +1816,6 @@ __metadata:
   version: 0.24.2
   resolution: "@esbuild/linux-arm64@npm:0.24.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-arm64%2F-%2Flinux-arm64-0.24.2.tgz"
   conditions: os=linux & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@esbuild/linux-arm@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-arm@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-arm%2F-%2Flinux-arm-0.20.2.tgz"
-  conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
@@ -2016,13 +1833,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-ia32@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-ia32@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-ia32%2F-%2Flinux-ia32-0.20.2.tgz"
-  conditions: os=linux & cpu=ia32
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-ia32@npm:0.23.1":
   version: 0.23.1
   resolution: "@esbuild/linux-ia32@npm:0.23.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-ia32%2F-%2Flinux-ia32-0.23.1.tgz"
@@ -2034,13 +1844,6 @@ __metadata:
   version: 0.24.2
   resolution: "@esbuild/linux-ia32@npm:0.24.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-ia32%2F-%2Flinux-ia32-0.24.2.tgz"
   conditions: os=linux & cpu=ia32
-  languageName: node
-  linkType: hard
-
-"@esbuild/linux-loong64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-loong64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-loong64%2F-%2Flinux-loong64-0.20.2.tgz"
-  conditions: os=linux & cpu=loong64
   languageName: node
   linkType: hard
 
@@ -2058,13 +1861,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-mips64el@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-mips64el@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-mips64el%2F-%2Flinux-mips64el-0.20.2.tgz"
-  conditions: os=linux & cpu=mips64el
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-mips64el@npm:0.23.1":
   version: 0.23.1
   resolution: "@esbuild/linux-mips64el@npm:0.23.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-mips64el%2F-%2Flinux-mips64el-0.23.1.tgz"
@@ -2076,13 +1872,6 @@ __metadata:
   version: 0.24.2
   resolution: "@esbuild/linux-mips64el@npm:0.24.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-mips64el%2F-%2Flinux-mips64el-0.24.2.tgz"
   conditions: os=linux & cpu=mips64el
-  languageName: node
-  linkType: hard
-
-"@esbuild/linux-ppc64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-ppc64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-ppc64%2F-%2Flinux-ppc64-0.20.2.tgz"
-  conditions: os=linux & cpu=ppc64
   languageName: node
   linkType: hard
 
@@ -2100,13 +1889,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-riscv64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-riscv64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-riscv64%2F-%2Flinux-riscv64-0.20.2.tgz"
-  conditions: os=linux & cpu=riscv64
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-riscv64@npm:0.23.1":
   version: 0.23.1
   resolution: "@esbuild/linux-riscv64@npm:0.23.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-riscv64%2F-%2Flinux-riscv64-0.23.1.tgz"
@@ -2121,13 +1903,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/linux-s390x@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-s390x@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-s390x%2F-%2Flinux-s390x-0.20.2.tgz"
-  conditions: os=linux & cpu=s390x
-  languageName: node
-  linkType: hard
-
 "@esbuild/linux-s390x@npm:0.23.1":
   version: 0.23.1
   resolution: "@esbuild/linux-s390x@npm:0.23.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-s390x%2F-%2Flinux-s390x-0.23.1.tgz"
@@ -2139,13 +1914,6 @@ __metadata:
   version: 0.24.2
   resolution: "@esbuild/linux-s390x@npm:0.24.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-s390x%2F-%2Flinux-s390x-0.24.2.tgz"
   conditions: os=linux & cpu=s390x
-  languageName: node
-  linkType: hard
-
-"@esbuild/linux-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/linux-x64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Flinux-x64%2F-%2Flinux-x64-0.20.2.tgz"
-  conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
@@ -2167,13 +1935,6 @@ __metadata:
   version: 0.24.2
   resolution: "@esbuild/netbsd-arm64@npm:0.24.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fnetbsd-arm64%2F-%2Fnetbsd-arm64-0.24.2.tgz"
   conditions: os=netbsd & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@esbuild/netbsd-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/netbsd-x64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fnetbsd-x64%2F-%2Fnetbsd-x64-0.20.2.tgz"
-  conditions: os=netbsd & cpu=x64
   languageName: node
   linkType: hard
 
@@ -2205,13 +1966,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/openbsd-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/openbsd-x64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fopenbsd-x64%2F-%2Fopenbsd-x64-0.20.2.tgz"
-  conditions: os=openbsd & cpu=x64
-  languageName: node
-  linkType: hard
-
 "@esbuild/openbsd-x64@npm:0.23.1":
   version: 0.23.1
   resolution: "@esbuild/openbsd-x64@npm:0.23.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fopenbsd-x64%2F-%2Fopenbsd-x64-0.23.1.tgz"
@@ -2223,13 +1977,6 @@ __metadata:
   version: 0.24.2
   resolution: "@esbuild/openbsd-x64@npm:0.24.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fopenbsd-x64%2F-%2Fopenbsd-x64-0.24.2.tgz"
   conditions: os=openbsd & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@esbuild/sunos-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/sunos-x64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fsunos-x64%2F-%2Fsunos-x64-0.20.2.tgz"
-  conditions: os=sunos & cpu=x64
   languageName: node
   linkType: hard
 
@@ -2247,13 +1994,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/win32-arm64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/win32-arm64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fwin32-arm64%2F-%2Fwin32-arm64-0.20.2.tgz"
-  conditions: os=win32 & cpu=arm64
-  languageName: node
-  linkType: hard
-
 "@esbuild/win32-arm64@npm:0.23.1":
   version: 0.23.1
   resolution: "@esbuild/win32-arm64@npm:0.23.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fwin32-arm64%2F-%2Fwin32-arm64-0.23.1.tgz"
@@ -2268,13 +2008,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/win32-ia32@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/win32-ia32@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fwin32-ia32%2F-%2Fwin32-ia32-0.20.2.tgz"
-  conditions: os=win32 & cpu=ia32
-  languageName: node
-  linkType: hard
-
 "@esbuild/win32-ia32@npm:0.23.1":
   version: 0.23.1
   resolution: "@esbuild/win32-ia32@npm:0.23.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fwin32-ia32%2F-%2Fwin32-ia32-0.23.1.tgz"
@@ -2286,13 +2019,6 @@ __metadata:
   version: 0.24.2
   resolution: "@esbuild/win32-ia32@npm:0.24.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fwin32-ia32%2F-%2Fwin32-ia32-0.24.2.tgz"
   conditions: os=win32 & cpu=ia32
-  languageName: node
-  linkType: hard
-
-"@esbuild/win32-x64@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@esbuild/win32-x64@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40esbuild%2Fwin32-x64%2F-%2Fwin32-x64-0.20.2.tgz"
-  conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
@@ -4819,19 +4545,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"contentlayer2@npm:^0.4.6":
-  version: 0.4.6
-  resolution: "contentlayer2@npm:0.4.6::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2Fcontentlayer2%2F-%2Fcontentlayer2-0.4.6.tgz"
+"contentlayer2@npm:^0.5.3":
+  version: 0.5.3
+  resolution: "contentlayer2@npm:0.5.3"
   dependencies:
-    "@contentlayer2/cli": "npm:0.4.3"
-    "@contentlayer2/client": "npm:0.4.3"
-    "@contentlayer2/core": "npm:0.4.3"
-    "@contentlayer2/source-files": "npm:0.4.3"
-    "@contentlayer2/source-remote-files": "npm:0.4.3"
-    "@contentlayer2/utils": "npm:0.4.3"
+    "@contentlayer2/cli": "npm:0.5.3"
+    "@contentlayer2/client": "npm:0.5.3"
+    "@contentlayer2/core": "npm:0.5.3"
+    "@contentlayer2/source-files": "npm:0.5.3"
+    "@contentlayer2/source-remote-files": "npm:0.5.3"
+    "@contentlayer2/utils": "npm:0.5.3"
   bin:
     contentlayer2: ./bin/cli.cjs
-  checksum: 10c0/33d27bd26b1bc02260959a7cf237c83162d1fc66805b41379fa0701e9859df54b8d23ebcdb930fbf69ff78a48bd48171d7901198db007f77f4a35c76d9776a29
+  checksum: 10c0/9a1eb17dd983fb3fd766879e678dd7feecc257b8c6eec351b91017e78354a9e5c51b94a23904911b00d936a20db4a48b2de0d2b1a27fb74f0119842cf21a4d34
   languageName: node
   linkType: hard
 
@@ -5513,86 +5239,6 @@ __metadata:
     esast-util-from-estree: "npm:^2.0.0"
     vfile-message: "npm:^4.0.0"
   checksum: 10c0/3a446fb0b0d7bcd7e0157aa44b3b692802a08c93edbea81cc0f7fe4437bfdfb4b72e4563fe63b4e36d390086b71185dba4ac921f4180cc6349985c263cc74421
-  languageName: node
-  linkType: hard
-
-"esbuild@npm:0.17.x || 0.18.x || 0.19.x || 0.20.x":
-  version: 0.20.2
-  resolution: "esbuild@npm:0.20.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2Fesbuild%2F-%2Fesbuild-0.20.2.tgz"
-  dependencies:
-    "@esbuild/aix-ppc64": "npm:0.20.2"
-    "@esbuild/android-arm": "npm:0.20.2"
-    "@esbuild/android-arm64": "npm:0.20.2"
-    "@esbuild/android-x64": "npm:0.20.2"
-    "@esbuild/darwin-arm64": "npm:0.20.2"
-    "@esbuild/darwin-x64": "npm:0.20.2"
-    "@esbuild/freebsd-arm64": "npm:0.20.2"
-    "@esbuild/freebsd-x64": "npm:0.20.2"
-    "@esbuild/linux-arm": "npm:0.20.2"
-    "@esbuild/linux-arm64": "npm:0.20.2"
-    "@esbuild/linux-ia32": "npm:0.20.2"
-    "@esbuild/linux-loong64": "npm:0.20.2"
-    "@esbuild/linux-mips64el": "npm:0.20.2"
-    "@esbuild/linux-ppc64": "npm:0.20.2"
-    "@esbuild/linux-riscv64": "npm:0.20.2"
-    "@esbuild/linux-s390x": "npm:0.20.2"
-    "@esbuild/linux-x64": "npm:0.20.2"
-    "@esbuild/netbsd-x64": "npm:0.20.2"
-    "@esbuild/openbsd-x64": "npm:0.20.2"
-    "@esbuild/sunos-x64": "npm:0.20.2"
-    "@esbuild/win32-arm64": "npm:0.20.2"
-    "@esbuild/win32-ia32": "npm:0.20.2"
-    "@esbuild/win32-x64": "npm:0.20.2"
-  dependenciesMeta:
-    "@esbuild/aix-ppc64":
-      optional: true
-    "@esbuild/android-arm":
-      optional: true
-    "@esbuild/android-arm64":
-      optional: true
-    "@esbuild/android-x64":
-      optional: true
-    "@esbuild/darwin-arm64":
-      optional: true
-    "@esbuild/darwin-x64":
-      optional: true
-    "@esbuild/freebsd-arm64":
-      optional: true
-    "@esbuild/freebsd-x64":
-      optional: true
-    "@esbuild/linux-arm":
-      optional: true
-    "@esbuild/linux-arm64":
-      optional: true
-    "@esbuild/linux-ia32":
-      optional: true
-    "@esbuild/linux-loong64":
-      optional: true
-    "@esbuild/linux-mips64el":
-      optional: true
-    "@esbuild/linux-ppc64":
-      optional: true
-    "@esbuild/linux-riscv64":
-      optional: true
-    "@esbuild/linux-s390x":
-      optional: true
-    "@esbuild/linux-x64":
-      optional: true
-    "@esbuild/netbsd-x64":
-      optional: true
-    "@esbuild/openbsd-x64":
-      optional: true
-    "@esbuild/sunos-x64":
-      optional: true
-    "@esbuild/win32-arm64":
-      optional: true
-    "@esbuild/win32-ia32":
-      optional: true
-    "@esbuild/win32-x64":
-      optional: true
-  bin:
-    esbuild: bin/esbuild
-  checksum: 10c0/66398f9fb2c65e456a3e649747b39af8a001e47963b25e86d9c09d2a48d61aa641b27da0ce5cad63df95ad246105e1d83e7fee0e1e22a0663def73b1c5101112
   languageName: node
   linkType: hard
 
@@ -8150,7 +7796,7 @@ __metadata:
     next: "npm:14.2.23"
     next-contentlayer2: "npm:0.5.3"
     next-themes: "npm:^0.3.0"
-    pliny: "npm:0.2.2"
+    pliny: "npm:0.4.0"
     postcss: "npm:^8.5.1"
     prettier: "npm:^3.4.2"
     prettier-plugin-tailwindcss: "npm:^0.5.14"
@@ -9232,18 +8878,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-contentlayer2@npm:^0.4.6":
-  version: 0.4.6
-  resolution: "next-contentlayer2@npm:0.4.6::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2Fnext-contentlayer2%2F-%2Fnext-contentlayer2-0.4.6.tgz"
+"next-contentlayer2@npm:^0.5.3":
+  version: 0.5.3
+  resolution: "next-contentlayer2@npm:0.5.3"
   dependencies:
-    "@contentlayer2/core": "npm:0.4.3"
-    "@contentlayer2/utils": "npm:0.4.3"
+    "@contentlayer2/core": "npm:0.5.3"
+    "@contentlayer2/utils": "npm:0.5.3"
   peerDependencies:
-    contentlayer2: 0.4.6
-    next: ^12 || ^13 || ^14
-    react: "*"
-    react-dom: "*"
-  checksum: 10c0/e3af4c4e8d3aec63d90d08b113402bb473e3c1acafac08fd9eb437e4cf5a54b34e617141306384fd6aff55810530cb83d2ef866583ed71ef0a7031d31b0f33c3
+    contentlayer2: 0.5.3
+    next: ">=12.0.0"
+    react: ^18 || ^19 || ^19.0.0-rc
+    react-dom: ^18 || ^19 || ^19.0.0-rc
+  checksum: 10c0/5d1f76a65351d652355754a2a67caf14354562805d0208a6fe3cbdfb62e861e3bfd3789922d494086d46309ebc3d7d3a209b8a73029afcba8640a7148a1bdb7d
   languageName: node
   linkType: hard
 
@@ -9772,28 +9418,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pliny@npm:0.2.2":
-  version: 0.2.2
-  resolution: "pliny@npm:0.2.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2Fpliny%2F-%2Fpliny-0.2.2.tgz"
+"pliny@npm:0.4.0":
+  version: 0.4.0
+  resolution: "pliny@npm:0.4.0"
   dependencies:
-    "@docsearch/react": "npm:^3.5.0"
+    "@docsearch/react": "npm:^3.6.2"
     "@giscus/react": "npm:^3.0.0"
     "@mailchimp/mailchimp_marketing": "npm:^3.0.80"
-    contentlayer2: "npm:^0.4.6"
+    contentlayer2: "npm:^0.5.3"
     copyfiles: "npm:^2.4.1"
     github-slugger: "npm:^2.0.0"
     js-yaml: "npm:4.1.0"
     kbar: "npm:0.1.0-beta.45"
-    next-contentlayer2: "npm:^0.4.6"
+    next-contentlayer2: "npm:^0.5.3"
     next-themes: "npm:^0.3.0"
     probe-image-size: "npm:^7.2.3"
     remark: "npm:^15.0.0"
     unist-util-visit: "npm:^5.0.0"
   peerDependencies:
     next: ">=13.0.0"
-    react: ^17.0.2 || ^18.0.0
-    react-dom: ^17.0.2 || ^18.0.0
-  checksum: 10c0/3ca6966b4e971f8a7f75f1fc7ba42f3fa487652feefa9b113ffabc4200ff48efc487246fbb281b6537c5872bf10600cf54e303c225b9c027eac00c9ef38fb073
+    react: ^17.0.2 || ^18 || ^19 || ^19.0.0-rc
+    react-dom: ^17.0.2 || ^18 || ^19 || ^19.0.0-rc
+  checksum: 10c0/00e12e84883fb8936b5ba468112eed03a1fbfdcb23d7e428dcd3146b098a0214dc99ed6021b59730117a2e9d61de88c70a8fac370bb5ec53346e8090caf3b710
   languageName: node
   linkType: hard
 
