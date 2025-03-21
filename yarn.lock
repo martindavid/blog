@@ -3993,20 +3993,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:*":
-  version: 15.7.14
-  resolution: "@types/prop-types@npm:15.7.14::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40types%2Fprop-types%2F-%2Fprop-types-15.7.14.tgz"
-  checksum: 10c0/1ec775160bfab90b67a782d735952158c7e702ca4502968aa82565bd8e452c2de8601c8dfe349733073c31179116cf7340710160d3836aa8a1ef76d1532893b1
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^18.3.19":
-  version: 18.3.19
-  resolution: "@types/react@npm:18.3.19::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2F%40types%2Freact%2F-%2Freact-18.3.19.tgz"
+"@types/react@npm:^19.0.0":
+  version: 19.0.12
+  resolution: "@types/react@npm:19.0.12"
   dependencies:
-    "@types/prop-types": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10c0/236bfe0c4748ada1a640f13573eca3e0fc7c9d847b442947adb352b0718d6d285357fd84c33336c8ffb8cbfabc0d58a43a647c7fd79857fecd61fb58ab6f7918
+  checksum: 10c0/c814b6af5c0fbcf5c65d031b1c9bf98c5b857e015254d95811f2851b27b869c3d31c6f35dab127dc6921a3dbda0b0622c6323d493a14b31b231a6a58c41c5e84
   languageName: node
   linkType: hard
 
@@ -8310,7 +8302,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2Floose-envify%2F-%2Floose-envify-1.4.0.tgz"
   dependencies:
@@ -8393,7 +8385,7 @@ __metadata:
     "@tailwindcss/typography": "npm:^0.5.16"
     "@types/mdx": "npm:^2.0.13"
     "@types/node": "npm:^22.13.10"
-    "@types/react": "npm:^18.3.19"
+    "@types/react": "npm:^19.0.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.27.0"
     "@typescript-eslint/parser": "npm:^8.27.0"
     autoprefixer: "npm:^10.4.21"
@@ -8418,8 +8410,8 @@ __metadata:
     postcss: "npm:^8.5.3"
     prettier: "npm:^3.5.3"
     prettier-plugin-tailwindcss: "npm:^0.5.14"
-    react: "npm:18.3.1"
-    react-dom: "npm:18.3.1"
+    react: "npm:19.0.0"
+    react-dom: "npm:19.0.0"
     reading-time: "npm:1.5.0"
     rehype-autolink-headings: "npm:^7.1.0"
     rehype-citation: "npm:^2.2.2"
@@ -10369,15 +10361,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:18.3.1":
-  version: 18.3.1
-  resolution: "react-dom@npm:18.3.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2Freact-dom%2F-%2Freact-dom-18.3.1.tgz"
+"react-dom@npm:19.0.0":
+  version: 19.0.0
+  resolution: "react-dom@npm:19.0.0"
   dependencies:
-    loose-envify: "npm:^1.1.0"
-    scheduler: "npm:^0.23.2"
+    scheduler: "npm:^0.25.0"
   peerDependencies:
-    react: ^18.3.1
-  checksum: 10c0/a752496c1941f958f2e8ac56239172296fcddce1365ce45222d04a1947e0cc5547df3e8447f855a81d6d39f008d7c32eab43db3712077f09e3f67c4874973e85
+    react: ^19.0.0
+  checksum: 10c0/a36ce7ab507b237ae2759c984cdaad4af4096d8199fb65b3815c16825e5cfeb7293da790a3fc2184b52bfba7ba3ff31c058c01947aff6fd1a3701632aabaa6a9
   languageName: node
   linkType: hard
 
@@ -10399,12 +10390,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:18.3.1":
-  version: 18.3.1
-  resolution: "react@npm:18.3.1::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2Freact%2F-%2Freact-18.3.1.tgz"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-  checksum: 10c0/283e8c5efcf37802c9d1ce767f302dd569dd97a70d9bb8c7be79a789b9902451e0d16334b05d73299b20f048cbc3c7d288bbbde10b701fa194e2089c237dbea3
+"react@npm:19.0.0":
+  version: 19.0.0
+  resolution: "react@npm:19.0.0"
+  checksum: 10c0/9cad8f103e8e3a16d15cb18a0d8115d8bd9f9e1ce3420310aea381eb42aa0a4f812cf047bb5441349257a05fba8a291515691e3cb51267279b2d2c3253f38471
   languageName: node
   linkType: hard
 
@@ -11337,12 +11326,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.23.2":
-  version: 0.23.2
-  resolution: "scheduler@npm:0.23.2::__archiveUrl=https%3A%2F%2Fpackages.atlassian.com%2Fapi%2Fnpm%2Fnpm-remote%2Fscheduler%2F-%2Fscheduler-0.23.2.tgz"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-  checksum: 10c0/26383305e249651d4c58e6705d5f8425f153211aef95f15161c151f7b8de885f24751b377e4a0b3dd42cce09aad3f87a61dab7636859c0d89b7daf1a1e2a5c78
+"scheduler@npm:^0.25.0":
+  version: 0.25.0
+  resolution: "scheduler@npm:0.25.0"
+  checksum: 10c0/a4bb1da406b613ce72c1299db43759526058fdcc413999c3c3e0db8956df7633acf395cb20eb2303b6a65d658d66b6585d344460abaee8080b4aa931f10eaafe
   languageName: node
   linkType: hard
 
